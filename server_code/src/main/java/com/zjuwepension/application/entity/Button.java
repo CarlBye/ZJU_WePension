@@ -12,8 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Button {
     @Id
-    @GeneratedValue
     private Long buttonId;
+    private String buttonName;
     @Enumerated(EnumType.ORDINAL)
     private ButtonType buttonType;
 }
