@@ -25,7 +25,7 @@ public class UserController {
         User regUser = new User();
         JsonObject result = null;
         if (jsonData.has("regName") && jsonData.has("regPwd") &&
-                jsonData.has("regPhone") && jsonData.has("regEmail")){
+                jsonData.has("regPhone") && jsonData.has("regEmail")) {
             // 根据post body初始化user实例
             regUser.setUserName(jsonData.get("regName").getAsString());
             // 加密 todo
@@ -53,10 +53,11 @@ public class UserController {
     public String logIn(@RequestBody String body){
         JsonObject jsonDate = new JsonParser().parse(body).getAsJsonObject();
         JsonObject result = new JsonObject();
-        if (jsonDate.has("logName") && jsonDate.has("logPwd")){
+        if (jsonDate.has("logName") && jsonDate.has("logPwd")) {
             User loginUser = userService.verifyLogIn(jsonDate.get("logName").getAsString(), jsonDate.get("logPwd").getAsString());
             if (null == loginUser){
                 result.addProperty("IsSuccess", false);
+                result.addProperty("ErrorInfo", "用户名或密码错误");
             } else {
                 result.addProperty("IsSuccess", true);
                 result.addProperty("curId", loginUser.getUserId().toString());
@@ -65,11 +66,13 @@ public class UserController {
                 result.addProperty("curEmail", loginUser.getUserEmail());
                 result.addProperty("curAlert", loginUser.getAlertPhoneNum());
                 result.addProperty("curImgPath", loginUser.getImgPath());
+                result.addProperty("ErrorInfo", "");
             }
         } else {
             result.addProperty("IsSuccess", false);
+            result.addProperty("ErrorInfo", "参数不完整");
         }
-        if (!result.get("IsSuccess").getAsBoolean()){
+        if (!result.get("IsSuccess").getAsBoolean()) {
             result.addProperty("curId", "");
             result.addProperty("curName", "");
             result.addProperty("curPhone", "");
@@ -109,11 +112,11 @@ public class UserController {
     public String updateUserPwd(@RequestBody String body){
         JsonObject jsonDate = new JsonParser().parse(body).getAsJsonObject();
         JsonObject result = new JsonObject();
-        if (jsonDate.has("curId") && jsonDate.has("newPwd") && jsonDate.has("oldPwd")){
+        if (jsonDate.has("curId") && jsonDate.has("newPwd") && jsonDate.has("oldPwd") ) {
             User user = userService.findUserById(jsonDate.get("curId").getAsLong());
             user.setUserPwd(jsonDate.get("newPwd").getAsString());
             user = userService.updateUser(user);
-            if (null != user){
+            if (null != user) {
                 result.addProperty("IsSuccess", true);
                 result.addProperty("curId", user.getUserId().toString());
             } else {

@@ -6,6 +6,8 @@ import com.zjuwepension.application.service.UserButtonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserButtonServiceImpl implements UserButtonService {
     @Autowired
@@ -19,5 +21,10 @@ public class UserButtonServiceImpl implements UserButtonService {
     @Override
     public UserButton updateUserButton(UserButton userButton){
         return userButtonRepository.save(userButton);
+    }
+
+    @Override
+    public List<UserButton> findUserButtonsByUserId(Long userId){
+        return userButtonRepository.findUserButtonsByUserId(userId);
     }
 }
