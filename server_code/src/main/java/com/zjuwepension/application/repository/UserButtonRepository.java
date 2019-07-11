@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface UserButtonRepository extends JpaRepository<UserButton, Long> {
     List<UserButton> findUserButtonsByUserId(Long userId);
+    List<UserButton> findUserButtonsByUserIdAndAndButtonId(Long userId, Long buttonId);
 }

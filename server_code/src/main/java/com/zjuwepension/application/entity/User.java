@@ -22,6 +22,8 @@ public class User {
     private String userEmail;
     private String alertPhoneNum;
     private String date;
-    private String imgPath;
+    private String description;
+    private Short faceId;
+    //private String imgPath;
     // todo sex address date...
 }

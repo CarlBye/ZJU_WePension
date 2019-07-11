@@ -4,18 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Furniture {
+public class UserFurn {
     @Id
     private Long furnId;
-    private String furnName;
-    @Enumerated(EnumType.ORDINAL)
-    private FurnStateType state;
-    @Enumerated(EnumType.ORDINAL)
-    private FurnType furnType;
+    private Long userId;
 }

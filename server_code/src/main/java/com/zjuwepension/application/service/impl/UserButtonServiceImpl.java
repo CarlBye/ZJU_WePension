@@ -27,4 +27,14 @@ public class UserButtonServiceImpl implements UserButtonService {
     public List<UserButton> findUserButtonsByUserId(Long userId){
         return userButtonRepository.findUserButtonsByUserId(userId);
     }
+
+    @Override
+    public Boolean hasUserButton(Long userId, Long buttonId){
+        List<UserButton> list = userButtonRepository.findUserButtonsByUserIdAndAndButtonId(userId, buttonId);
+        if (null != list && 1 == list.size()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

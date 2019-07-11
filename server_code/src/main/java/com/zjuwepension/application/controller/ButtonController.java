@@ -3,20 +3,20 @@ package com.zjuwepension.application.controller;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.zjuwepension.application.entity.Button;
-import com.zjuwepension.application.entity.ButtonType;
-import com.zjuwepension.application.entity.User;
-import com.zjuwepension.application.entity.UserButton;
+import com.zjuwepension.application.entity.*;
 import com.zjuwepension.application.service.ButtonService;
 import com.zjuwepension.application.service.UserButtonService;
 import com.zjuwepension.application.service.UserService;
+import com.zjuwepension.tool.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/button")
+@RequestMapping("/api/button")
 public class ButtonController {
     @Autowired
     private UserService userService;
@@ -95,4 +95,87 @@ public class ButtonController {
         }
         return result.toString();
     }
+
+    @PostMapping("/bind/furniture")
+    public String buttonBindFurn(@RequestBody String body){
+        JsonObject jsonData = new JsonParser().parse(body).getAsJsonObject();
+        JsonObject result = new JsonObject();
+        if (jsonData.has("curId") && jsonData.has("buttonId") && jsonData.has("furnId")) {
+            if (userButtonService.hasUserButton(jsonData.get("curId").getAsLong(), jsonData.get("buttonId").getAsLong())) {
+                Button button = buttonService.findButtonById(jsonData.get("buttonId").getAsLong());
+                button = buttonService.updateButtonFurn(button, jsonData.get("furnId").getAsLong());
+                if (null != button) {
+                    result.addProperty("ErrorInfo", "");
+                } else {
+                    result.addProperty("ErrorInfo", "绑定失败");
+                }
+            } else {
+                result.addProperty("ErrorInfo", "该用户未绑定该按钮");
+            }
+        } else {
+            result.addProperty("ErrorInfo", "参数不完整");
+        }
+        if (result.get("ErrorInfo").getAsString().equals("")) {
+            result.addProperty("IsSuccess", true);
+        } else {
+            result.addProperty("IsSuccess", false);
+        }
+
+        return result.toString();
+    }
+
+    @PostMapping("/bind/alert")
+    public String buttonBindAlert(@RequestBody String body){
+        JsonObject jsonData = new JsonParser().parse(body).getAsJsonObject();
+        JsonObject result = new JsonObject();
+        if (jsonData.has("curId") && jsonData.has("buttonId")) {
+            if (userButtonService.hasUserButton(jsonData.get("curId").getAsLong(), jsonData.get("buttonId").getAsLong())) {
+                Button button = buttonService.findButtonById(jsonData.get("buttonId").getAsLong());
+                button = buttonService.updateButtonAlert(button);
+                if (null != button) {
+                    result.addProperty("ErrorInfo", "");
+                } else {
+                    result.addProperty("ErrorInfo", "绑定失败");
+                }
+            } else {
+                result.addProperty("ErrorInfo", "该用户未绑定该按钮");
+            }
+        } else {
+            result.addProperty("ErrorInfo", "参数不完整");
+        }
+        return result.toString();
+    }
+
+    @PostMapping("/bind/commodity")
+    public String buttonBindCommodity(@RequestBody String body){
+        JsonObject jsonData = new JsonParser().parse(body).getAsJsonObject();
+        JsonObject result = new JsonObject();
+        if (jsonData.has("curId") && jsonData.has("comId") &&
+            jsonData.has("buttonId") && jsonData.has("num") &&
+            jsonData.has("comAddress") && jsonData.has("comPhone") &&
+            jsonData.has("comName")) {
+            if (userButtonService.hasUserButton(jsonData.get("curId").getAsLong(), jsonData.get("buttonId").getAsLong())){
+                Button button = buttonService.findButtonById(jsonData.get("buttonId").getAsLong());
+                CommodityOrderTemplate template = new CommodityOrderTemplate();
+                template.setNum(jsonData.get("num").getAsLong());
+                template.setDeliveryAddress(jsonData.get("comAddress").getAsString());
+                template.setDeliveryPhone(jsonData.get("comPhone").getAsString());
+                template.setDeliveryName(jsonData.get("comName").getAsString());
+                button = buttonService.updateButtonCommodity(button, template);
+                if (null != button) {
+                    result.addProperty("ErrorInfo", "");
+                } else {
+                    result.addProperty("ErrorInfo", "绑定失败");
+                }
+            } else {
+                result.addProperty("ErrorInfo", "该用户未绑定该按钮");
+            }
+        } else {
+            result.addProperty("ErrorInfo", "参数不完整");
+        }
+
+        return result.toString();
+    }
+
+
 }
