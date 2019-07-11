@@ -8,4 +8,5 @@ public interface UserButtonService {
     UserButton saveUserButton(UserButton userButton);
     UserButton updateUserButton(UserButton userButton);
     List<UserButton> findUserButtonsByUserId(Long userId);
+    Boolean hasUserButton(Long userId, Long buttonId);
 }

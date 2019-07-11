@@ -4,20 +4,27 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.zjuwepension.application.entity.User;
 import com.zjuwepension.application.service.UserService;
+import com.zjuwepension.tool.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Value("${server.port}")
+    private String port;
 
     @PostMapping("/register")
     public String createUser(@RequestBody String body){
@@ -25,7 +32,8 @@ public class UserController {
         User regUser = new User();
         JsonObject result = null;
         if (jsonData.has("regName") && jsonData.has("regPwd") &&
-                jsonData.has("regPhone") && jsonData.has("regEmail")) {
+                jsonData.has("regPhone") && jsonData.has("regEmail") &&
+                jsonData.has("regDescription") && jsonData.has("regFaceId")) {
             // 根据post body初始化user实例
             regUser.setUserName(jsonData.get("regName").getAsString());
             // 加密 todo
@@ -33,10 +41,9 @@ public class UserController {
             regUser.setUserPhoneNum(jsonData.get("regPhone").getAsString());
             regUser.setAlertPhoneNum(jsonData.get("regPhone").getAsString());
             regUser.setUserEmail(jsonData.get("regEmail").getAsString());
-            Date currentTime = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            regUser.setDate(format.format(currentTime));
-            regUser.setImgPath("");
+            regUser.setDescription(jsonData.get("regDescription").getAsString());
+            regUser.setDate(Tool.getDate());
+            regUser.setFaceId(jsonData.get("regFaceId").getAsShort());
             result = userService.verifyRegister(regUser);
             if(result.get("IsSuccess").getAsBoolean()){
                 userService.saveUser(regUser);
@@ -65,7 +72,8 @@ public class UserController {
                 result.addProperty("curPhone", loginUser.getUserPhoneNum());
                 result.addProperty("curEmail", loginUser.getUserEmail());
                 result.addProperty("curAlert", loginUser.getAlertPhoneNum());
-                result.addProperty("curImgPath", loginUser.getImgPath());
+                result.addProperty("curDescription", loginUser.getDescription());
+                result.addProperty("curFaceId", loginUser.getFaceId().toString());
                 result.addProperty("ErrorInfo", "");
             }
         } else {
@@ -78,6 +86,7 @@ public class UserController {
             result.addProperty("curPhone", "");
             result.addProperty("curEmail", "");
             result.addProperty("curAlert", "");
+            result.addProperty("curDescription", "");
             result.addProperty("curImgPath", "");
         }
         return result.toString();
@@ -129,5 +138,76 @@ public class UserController {
         }
         return result.toString();
     }
+
+    @PostMapping("/update/description")
+    public String updateUserDescription(@RequestBody String body){
+        JsonObject jsonDate = new JsonParser().parse(body).getAsJsonObject();
+        JsonObject result = new JsonObject();
+        if (jsonDate.has("curId") && jsonDate.has("newDescription")) {
+            User user = userService.findUserById(jsonDate.get("curId").getAsLong());
+            user.setDescription(jsonDate.get("newDescription").getAsString());
+            user = userService.updateUser(user);
+            if (null != user){
+                result.addProperty("IsSuccess", true);
+                result.addProperty("curId", user.getUserId().toString());
+                result.addProperty("curDescription", user.getDescription());
+            } else {
+                result.addProperty("IsSuccess", false);
+            }
+        } else {
+            result.addProperty("IsSuccess", false);
+        }
+        if (!result.get("IsSuccess").getAsBoolean()){
+            result.addProperty("curId", "");
+            result.addProperty("curDescription", "");
+        }
+        return result.toString();
+    }
+
+    /*
+    @PostMapping("/register/testForm")
+    public String registerForm(@RequestParam(value = "regName") String regName,
+                               @RequestParam(value = "regPwd") String regPwd,
+                               @RequestParam(value = "regPhone") String regPhone,
+                               @RequestParam(value = "regEmail") String regEmail,
+                               @RequestParam(value = "regDescription") String regDescription,
+                               @RequestParam(value = "regImg") MultipartFile regImg){
+        User regUser = new User();
+        JsonObject result = null;
+        if (null != regName && null != regPwd && null != regPhone && null != regEmail && null != regDescription && !regImg.isEmpty()) {
+            regUser.setUserName(regName);
+            regUser.setUserPwd(regPwd);
+            regUser.setUserPhoneNum(regPhone);
+            regUser.setAlertPhoneNum(regPhone);
+            regUser.setUserEmail(regEmail);
+            regUser.setDescription(regDescription);
+            regUser.setImgPath("");
+            Date currentTime = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            regUser.setDate(format.format(currentTime));
+            try{
+                byte[] bytes = regImg.getBytes();
+                String fileName = regImg.getOriginalFilename();
+                String suffixName = fileName.substring(fileName.lastIndexOf("."));
+                fileName = UUID.randomUUID().toString().replace("-", "") + suffixName;
+                regUser.setImgPath("http://47.100.98.181:" + port + "/user/userImg/" + fileName);
+                String pathName = System.getProperty("user.dir");
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(pathName + "/static/user/userImg" + fileName)));
+                bos.write(bytes);
+                bos.close();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            result = userService.verifyRegister(regUser);
+            if(result.get("IsSuccess").getAsBoolean()){
+                userService.saveUser(regUser);
+            }
+        } else {
+            result = new JsonObject();
+            result.addProperty("IsSuccess", false);
+            result.addProperty("ErrorInfo", "参数不完整");
+        }
+        return result.toString();
+    }*/
 
 }

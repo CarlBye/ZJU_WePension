@@ -6,6 +6,8 @@ import com.zjuwepension.application.repository.UserRepository;
 import com.zjuwepension.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,16 +16,19 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
     @Override
     public User saveUser(User user){
         return userRepository.save(user);
     }
 
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
     @Override
     public User updateUser(User user){
         return userRepository.save(user);
     }
 
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED, readOnly = true)
     @Override
     public JsonObject verifyRegister(User user){
         List<User> mailResult = userRepository.findUsersByUserEmail(user.getUserEmail());
@@ -42,6 +47,8 @@ public class UserServiceImpl implements UserService {
         }
         return result;
     }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED, readOnly = true)
     @Override
     public User verifyLogIn(String name, String pwd){
         List<User> resultList = userRepository.findUsersByUserNameAndUserPwd(name, pwd);
@@ -62,6 +69,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED, readOnly = true)
     @Override
     public User findUserById(Long id){
         List<User> result = userRepository.findUsersByUserId(id);
