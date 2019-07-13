@@ -79,4 +79,10 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public List<User> getAllUser(){
+        return userRepository.findAll();
+    }
 }

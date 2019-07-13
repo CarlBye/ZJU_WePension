@@ -6,4 +6,5 @@ public interface FurnitureService {
     Furniture saveFurn(Furniture furn);
     Furniture updateFurn(Furniture furn);
     Furniture findFurnByFurnId(Long id);
+    Furniture findActiveFurnByButtonId(Long buttonId);
 }
