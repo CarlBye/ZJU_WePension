@@ -75,14 +75,14 @@ public class FurnitureController {
                 result.addProperty("ErrorInfo", "");
                 result.add("furnList", new JsonObject());
                 List<UserFurn> list = userFurnService.findUserFurnsByUserId(user.getUserId());
-                result.get("furnList").getAsJsonObject().addProperty("num", list.size());
+                result.get("furnList").getAsJsonObject().addProperty("num", new Integer(list.size()).toString());
                 result.get("furnList").getAsJsonObject().add("list", new JsonArray());
                 for (int i = 0; i < list.size(); i++) {
                     JsonObject furnElement = new JsonObject();
                     furniture = furnitureService.findFurnByFurnId(list.get(i).getFurnId());
-                    furnElement.addProperty("furnId", furniture.getFurnId());
+                    furnElement.addProperty("furnId", furniture.getFurnId().toString());
                     furnElement.addProperty("furnName", furniture.getFurnName());
-                    furnElement.addProperty("furnType", furniture.getFurnType().ordinal());
+                    furnElement.addProperty("furnType", new Long(furniture.getFurnType().ordinal()).toString());
                     result.get("furnList").getAsJsonObject().get("list").getAsJsonArray().add(furnElement);
                 }
             } else {

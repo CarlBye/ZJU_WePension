@@ -7,6 +7,8 @@ import com.zjuwepension.application.repository.CommodityRepository;
 import com.zjuwepension.application.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class CommodityServiceImpl implements CommodityService {
         return commodityRepository.save(com);
     }
 
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
     @Override
     public Boolean hasCommodityOrderTemplate(Long buttonId, Long comId){
         List<CommodityOrderTemplate> list = commodityOrderTemplateRepository.findCommodityOrderTemplatesByButtonIdAndIsActive(buttonId,true);
@@ -34,4 +37,31 @@ public class CommodityServiceImpl implements CommodityService {
             return true;
         return false;
     }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public Commodity insertCommodity(Commodity commodity){
+        List<Commodity> list = commodityRepository.findCommoditiesByComNo(commodity.getComNo());
+        if (null != list && 0 < list.size()) {
+            return null;
+        }
+        commodity = commodityRepository.save(commodity);
+        return commodity;
+    }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public List<Commodity> getAllComList(){
+        return commodityRepository.findAll();
+    }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public Commodity findCommodityByComId(Long comId){
+        List<Commodity> list = commodityRepository.findCommoditiesByComId(comId);
+        if(null != list && 1 == list.size())
+            return list.get(0);
+        return null;
+    }
+
 }

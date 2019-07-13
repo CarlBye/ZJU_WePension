@@ -1,10 +1,14 @@
 package com.zjuwepension.application.service.impl;
 
+import com.zjuwepension.application.entity.ButtonFurn;
 import com.zjuwepension.application.entity.Furniture;
 import com.zjuwepension.application.repository.FurnitureRepository;
+import com.zjuwepension.application.service.ButtonFurnService;
 import com.zjuwepension.application.service.FurnitureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +16,8 @@ import java.util.List;
 public class FurnitureServiceImpl implements FurnitureService {
     @Autowired
     private FurnitureRepository furnitureRepository;
+    @Autowired
+    private ButtonFurnService buttonFurnService;
 
     @Override
     public Furniture saveFurn(Furniture furn){
@@ -23,6 +29,7 @@ public class FurnitureServiceImpl implements FurnitureService {
         return furnitureRepository.save(furn);
     }
 
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
     @Override
     public Furniture findFurnByFurnId(Long id){
         List<Furniture> furnitureList = furnitureRepository.findFurnituresByFurnId(id);
@@ -31,5 +38,14 @@ public class FurnitureServiceImpl implements FurnitureService {
         } else {
             return null;
         }
+    }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public Furniture findActiveFurnByButtonId(Long buttonId){
+        ButtonFurn buttonFurn = buttonFurnService.findActiveButtonFurnByButtonId(buttonId);
+        if (null == buttonFurn)
+            return null;
+        return findFurnByFurnId(buttonFurn.getFurnId());
     }
 }
