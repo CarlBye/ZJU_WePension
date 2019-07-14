@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>养老宝-后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div>
+      <div class="login_wrapper">
+        <div class="animate form login_form" style="background: rgba(255,255,255,0.8);padding:20px;">
+          <section class="login_content">
+            <form id="login_post" method="post" onsubmit="return false">
+              <h1>管理员登录</h1>
+              <div>
+                <label>
+                  <input type="text" class="form-control" name="logName" placeholder="账号" required
+                          ="required"/>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="password" class="form-control" name="logPwd" placeholder="密码" required="required"/>
+                </label>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-default" id="loginButton">登录</button>
+              </div>
+              <div class="clearfix"></div>
+              <div class="separator">
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                  <p>©2019 All Rights Reserved. </p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+  </div>
+
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>
