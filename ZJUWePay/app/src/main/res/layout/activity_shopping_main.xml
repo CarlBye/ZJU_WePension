@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/btn_backToButtonSetting"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="浏览商品"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#000"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="2.5dp"
+        android:background="#000"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_addBuyButton"
+            android:layout_width="330dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/rounded_search_input">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/edit" />
+
+            <View
+                android:layout_height="20dp"
+                android:layout_width="1dp"
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="center_vertical"
+                android:background="#000"/>
+
+            <EditText
+                android:id="@+id/et_loginId"
+                android:cursorVisible="false"
+                android:inputType="text"
+                android:hint="输入商品名搜索"
+                android:textSize="15sp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="@drawable/rounded_rec_input_shape_search"
+                android:alpha="0.5" />
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/cancel" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="6dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/rounded_rec_pager_shape">
+
+        <View
+            android:layout_height="40dp"
+            android:layout_width="1dp"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center_vertical"
+            android:background="#000"/>
+
+        <com.jude.rollviewpager.RollPagerView
+            android:id="@+id/roll_view_pager"
+            android:layout_width="335dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:rollviewpager_play_delay="5000"
+            />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/circle" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="5dp"
+        android:background="#000"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="2.5dp"
+        android:background="#000"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_allItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:isScrollContainer="true">
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
