@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "userId")
     private Long userId;
     private String userName;
     private String userPwd;

@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Admin {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "adminId")
     private Long adminId;
     private String adminName;
     private String adminPwd;

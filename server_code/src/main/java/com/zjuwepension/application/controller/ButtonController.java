@@ -26,6 +26,8 @@ public class ButtonController {
     private FurnitureService furnitureService;
     @Autowired
     private CommodityOrderTemplateService commodityOrderTemplateService;
+    @Autowired
+    private CommodityService commodityService;
 
     @PostMapping("/bind")
     public String buttonBind(@RequestBody String body){
@@ -145,6 +147,11 @@ public class ButtonController {
         } else {
             result.addProperty("ErrorInfo", "参数不完整");
         }
+        if (result.get("ErrorInfo").getAsString().equals("")) {
+            result.addProperty("IsSuccess", true);
+        } else {
+            result.addProperty("IsSuccess", false);
+        }
         return result.toString();
     }
 
@@ -154,15 +161,16 @@ public class ButtonController {
         JsonObject result = new JsonObject();
         if (jsonData.has("curId") && jsonData.has("comId") &&
             jsonData.has("buttonId") && jsonData.has("num") &&
-            jsonData.has("comAddress") && jsonData.has("comPhone") &&
-            jsonData.has("comName")) {
+            jsonData.has("comDeliveryAddress") && jsonData.has("comDeliveryPhone") &&
+            jsonData.has("comDeliveryName")) {
             if (userButtonService.hasUserButton(jsonData.get("curId").getAsLong(), jsonData.get("buttonId").getAsLong())){
                 Button button = buttonService.findButtonById(jsonData.get("buttonId").getAsLong());
                 CommodityOrderTemplate template = new CommodityOrderTemplate();
                 template.setNum(jsonData.get("num").getAsLong());
-                template.setDeliveryAddress(jsonData.get("comAddress").getAsString());
-                template.setDeliveryPhone(jsonData.get("comPhone").getAsString());
-                template.setDeliveryName(jsonData.get("comName").getAsString());
+                template.setComId(jsonData.get("comId").getAsLong());
+                template.setDeliveryAddress(jsonData.get("comDeliveryAddress").getAsString());
+                template.setDeliveryPhone(jsonData.get("comDeliveryPhone").getAsString());
+                template.setDeliveryName(jsonData.get("comDeliveryName").getAsString());
                 button = buttonService.updateButtonCommodity(button, template);
                 if (null != button) {
                     result.addProperty("ErrorInfo", "");
@@ -174,6 +182,11 @@ public class ButtonController {
             }
         } else {
             result.addProperty("ErrorInfo", "参数不完整");
+        }
+        if (result.get("ErrorInfo").getAsString().equals("")) {
+            result.addProperty("IsSuccess", true);
+        } else {
+            result.addProperty("IsSuccess", false);
         }
 
         return result.toString();
@@ -284,4 +297,41 @@ public class ButtonController {
         return result.toString();
     }
 
+    @PostMapping("/onclick")
+    public String clickButton(@RequestBody String body){
+        JsonObject jsonData = new JsonParser().parse(body).getAsJsonObject();
+        JsonObject result = new JsonObject();
+        if (jsonData.has("buttonId")) {
+            Button button = buttonService.findButtonById(jsonData.get("buttonId").getAsLong());
+            if (null != button) {
+                String changeInfo = "";
+                switch (button.getButtonType()) {
+                    case UNKNOW:
+                        break;
+                    case FORFURN:
+                        changeInfo = furnitureService.changFurnStateByButtonId(button.getButtonId());
+                        break;
+                    case FORSHOP:
+                        changeInfo = commodityService.addOrderFromTemplateByButtonId(button.getButtonId());
+                        break;
+                    case FORHELP:
+                        // todo
+                        break;
+                    case FORMONITOR:
+                        break;
+                }
+                result.addProperty("ErrorInfo", changeInfo);
+            } else {
+                result.addProperty("ErrorInfo", "不存在该按钮");
+            }
+        } else {
+            result.addProperty("ErrorInfo", "参数不完整");
+        }
+        if (!result.get("ErrorInfo").getAsString().equals("")) {
+            result.addProperty("IsSuccess", false);
+        } else {
+            result.addProperty("IsSuccess", true);
+        }
+        return result.toString();
+    }
 }
