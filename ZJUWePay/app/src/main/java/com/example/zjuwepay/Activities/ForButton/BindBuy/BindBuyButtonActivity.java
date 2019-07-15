@@ -131,7 +131,7 @@ public class BindBuyButtonActivity extends AppCompatActivity implements Constant
         if(PublicData.getComName() != null) tvItemName.setText(PublicData.getComName());
         if(PublicData.getComId() != null) tvItemId.setText(PublicData.getComId());
         if(PublicData.getComAmount() != null) tvItemAmount.setText(PublicData.getComAmount() + "件");
-        if(PublicData.getComPrice() != null && PublicData.getComAmount() != null) {
+        if(PublicData.getComPrice() != "" && PublicData.getComAmount() != "") {
             DecimalFormat format = new DecimalFormat("0.00");
             String str = String.valueOf(Double.parseDouble(PublicData.getComPrice()) * Integer.parseInt(PublicData.getComAmount()));
             String price = format.format(new BigDecimal(str));

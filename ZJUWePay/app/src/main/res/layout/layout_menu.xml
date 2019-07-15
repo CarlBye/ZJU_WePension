@@ -135,6 +135,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_myOrder"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal"

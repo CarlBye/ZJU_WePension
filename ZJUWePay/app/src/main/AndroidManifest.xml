@@ -33,6 +33,8 @@
         <activity android:name=".Activities.ForButton.ChooseAction.ChooseButtonActivity"/>
         <activity android:name=".Activities.ForButton.ChooseAction.ChooseFurnitureActivity"/>
         <activity android:name=".Activities.ForShopping.ItemDetailsActivity"/>
+        <activity android:name=".Activities.ForInfo.MyOrder.MyOrderActivity"/>
+        <activity android:name=".Activities.ForInfo.MyOrder.OrderDetailActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -25,6 +25,7 @@ import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -171,48 +172,85 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                 String regEmail         = etPwdEmail.getText().toString();
                 String regDescription   = etDescription.getText().toString();
 
-                if(!regPwd1.equals(regPwd2)) {
-                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "两次密码不一致", Toast.LENGTH_LONG);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 0);
+                //regex
+                String phoneCheck = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17[013678])|(18[0,5-9]))\\d{8}$";
+                Pattern phone = Pattern.compile(phoneCheck);
+                String emailCheck = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+                Pattern email = Pattern.compile(emailCheck);
+
+                if(face_user_chosen == 0) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "请选择头像", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
                     errorMsg.show();
-                } else {
-                    Map regInfo = new HashMap();
-                    regInfo.put("regName", regName);
-                    regInfo.put("regPwd", regPwd1);
-                    regInfo.put("regPhone", regPhone);
-                    regInfo.put("regEmail", regEmail);
-                    regInfo.put("regDescription", regDescription);
-                    regInfo.put("regFaceId", face_user_chosen);
-                    handleRegister(regInfo);
+                    break;
+                } else if(regName.equals("")) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.show();
+                    break;
+                } else if(regPwd1.equals("")) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.show();
+                    break;
+                } else if(regPwd2.equals("")) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入第二次密码", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.show();
+                    break;
+                } else if(!regPwd1.equals(regPwd2)) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "两次密码不一致", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.show();
+                    break;
+                } else if(regPhone.length() != 11 || !phone.matcher(regPhone).matches()) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入正确格式的手机号", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.show();
+                    break;
+                } else if(!email.matcher(regEmail).matches()) {
+                    Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入正确格式的邮箱", Toast.LENGTH_SHORT);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.show();
+                    break;
+                }
 
-                    PublicData.setRegNameTemp(null);
-                    PublicData.setRegPwd1Tmp(null);
-                    PublicData.setRegPwd2Temp(null);
-                    PublicData.setRegPhoneTemp(null);
-                    PublicData.setRegEmailTemp(null);
-                    PublicData.setRegDescriptionTemp(null);
+                Map regInfo = new HashMap();
+                regInfo.put("regName", regName);
+                regInfo.put("regPwd", regPwd1);
+                regInfo.put("regPhone", regPhone);
+                regInfo.put("regEmail", regEmail);
+                regInfo.put("regDescription", regDescription);
+                regInfo.put("regFaceId", face_user_chosen);
+                handleRegister(regInfo);
 
-                    while(!msgKey) {}
+                PublicData.setRegNameTemp(null);
+                PublicData.setRegPwd1Tmp(null);
+                PublicData.setRegPwd2Temp(null);
+                PublicData.setRegPhoneTemp(null);
+                PublicData.setRegEmailTemp(null);
+                PublicData.setRegDescriptionTemp(null);
 
-                    String thisMsg = PublicData.getFeedback();
-                    if(thisMsg == "") {
-                        thisMsg = "注册成功";
-                    }
+                while(!msgKey) {}
 
-                    Toast errMsg = Toast.makeText(RegisterActivity.this, thisMsg, Toast.LENGTH_LONG);
-                    errMsg.setGravity(Gravity.BOTTOM, 0, 120);
-                    errMsg.show();
+                String thisMsg = PublicData.getFeedback();
+                if(thisMsg == "") {
+                    thisMsg = "注册成功";
+                }
 
-                    SystemClock.sleep(1000);
+                Toast errMsg = Toast.makeText(RegisterActivity.this, thisMsg, Toast.LENGTH_LONG);
+                errMsg.setGravity(Gravity.BOTTOM, 0, 120);
+                errMsg.show();
 
-                    msgKey = false;
+                SystemClock.sleep(1000);
 
-                    if(thisMsg.equals("注册成功")) {
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
-                    }
+                msgKey = false;
+
+                if(thisMsg.equals("注册成功")) {
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
                 }
 
                 break;

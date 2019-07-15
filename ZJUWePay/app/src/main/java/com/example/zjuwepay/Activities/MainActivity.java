@@ -5,6 +5,7 @@ import com.example.zjuwepay.ActionHandlers.SlideMenu;
 import com.example.zjuwepay.Activities.ForButton.BindButtonMainActivity;
 import com.example.zjuwepay.Activities.ForInfo.MyButton.MyButtonActivity;
 import com.example.zjuwepay.Activities.ForInfo.MyFurniture.MyFurnitureActivity;
+import com.example.zjuwepay.Activities.ForInfo.MyOrder.MyOrderActivity;
 import com.example.zjuwepay.Activities.ForUser.LoginActivity;
 import com.example.zjuwepay.Activities.ForUser.LogoutActivity;
 import com.example.zjuwepay.Activities.ForUser.SettingActivity;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
     //components
     private ImageView ivOpen, ivBack, ivSetting, ivAddAks, btnUserFace;
     private SlideMenu slideMenu;
-    private LinearLayout llMyButton, llMyFurniture;
+    private LinearLayout llMyButton, llMyFurniture, llMyOrder;
     private TextView tvUserName, tvUserDescription;
 
     @Override
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
         //bind linear layout (button)
         llMyButton      = findViewById(R.id.ll_myButton);
         llMyFurniture   = findViewById(R.id.ll_myFurniture);
+        llMyOrder       = findViewById(R.id.ll_myOrder);
 
         //bind text view
         tvUserName  = findViewById(R.id.tv_userName);
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
         btnUserFace.setOnClickListener(this);
         llMyButton.setOnClickListener(this);
         llMyFurniture.setOnClickListener(this);
+        llMyOrder.setOnClickListener(this);
     }
 
     @Override
@@ -191,6 +194,30 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
                         @Override
                         public void run() {
                             Intent intent = new Intent(MainActivity.this, MyFurnitureActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                        }
+                    }, 0);
+                }
+                break;
+
+            case R.id.ll_myOrder:
+                if(PublicData.getCurrentUserId() == 0) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                        }
+                    }, 0);
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, MyOrderActivity.class);
                             startActivity(intent);
                             finish();
                             overridePendingTransition(R.anim.zoomin,R.anim.zoomout);

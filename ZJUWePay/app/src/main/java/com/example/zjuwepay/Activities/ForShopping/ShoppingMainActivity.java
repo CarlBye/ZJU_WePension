@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -42,6 +44,8 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
     //connection
     private static final String URL_ROOT = "http://47.100.98.181:32006";
     private static final String ITEMS_ALL = "/api/commodity/list";
+    private static final String SEARCH_ITEM = "/api/commodity/listByName";
+
     //config for button list
     private int listSize = 0;
     private ArrayList<Map<String, String>> items;
@@ -53,9 +57,14 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
     private ImageView ivBackToButtonSetting;
     private RollPagerView mRollViewPager;
     private LinearLayout llAllItems;
+    private EditText etSearchTag;
+    private TextView tvSearchConfirm;
 
     //async lock
     private boolean wait_lock = false;
+
+    //default lock
+    private boolean is_first = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +83,12 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
         //bind linear layout
         llAllItems              = findViewById(R.id.ll_allItems);
 
+        //bind edit text
+        etSearchTag             = findViewById(R.id.et_searchTag);
+
+        //bind text view
+        tvSearchConfirm         = findViewById(R.id.tv_searchConfirm);
+
         //setting for pager
         mRollViewPager.setAdapter(new TestLoopAdapter(mRollViewPager));
         mRollViewPager.setHintView(new ColorPointHintView(this, Color.GRAY, Color.WHITE));
@@ -81,9 +96,13 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
 
         //bind listener
         ivBackToButtonSetting.setOnClickListener(this);
+        tvSearchConfirm.setOnClickListener(this);
 
         //fetch button list
-        getItemsInfo();
+        if(is_first) {
+            is_first = false;
+            getItemsInfo();
+        }
         while(!wait_lock){
             SystemClock.sleep(10);
             System.out.println("tick");
@@ -106,7 +125,66 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
                     }
                 }, 30);
                 break;
+            case R.id.tv_searchConfirm:
+                String searchTag = etSearchTag.getText().toString();
+                Map searchInfo = new HashMap();
+                searchInfo.put("comName", searchTag);
+                goRefresh(searchInfo);
+                while(!wait_lock){
+                    SystemClock.sleep(10);
+                    System.out.println("tick");
+                }
+                if(listSize != 0) LoadItemsInfo();
+                wait_lock = false;
+                break;
         }
+    }
+
+    private void goRefresh(Map<Object, Object> map) {
+        String params = myPack.toJson(map);
+        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, params);
+
+        Request request = new Request.Builder()
+                .url(URL_ROOT + SEARCH_ITEM)
+                .post(requestBody)
+                .build();
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d(TAG, "onFailure: " + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, response.protocol() + " " +response.code() + " " + response.message());
+                Headers headers = response.headers();
+                for (int i = 0; i < headers.size(); i++) {
+                    Log.d(TAG, headers.name(i) + ":" + headers.value(i));
+                }
+
+                String mainInfo = response.body().string();
+
+                Map responseInfo;
+                JsonObject jsonObject = new JsonParser().parse(mainInfo).getAsJsonObject();
+                responseInfo = myPack.fromJson(jsonObject, Map.class);
+
+                //get button list map
+                Map itemList = (Map)responseInfo.get("commodityList");
+                System.out.println(mainInfo);
+
+                //get button amount
+                listSize = Integer.parseInt((String)itemList.get("num"));
+
+                //get button list
+                items = (ArrayList<Map<String, String>>) itemList.get("list");
+
+                wait_lock = true;
+
+                Log.d(TAG, "onResponse: " + mainInfo);
+            }
+        });
     }
 
     private void getItemsInfo() {
@@ -158,6 +236,7 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
     }
 
     private void LoadItemsInfo() {
+        llAllItems.removeAllViews();
         //build item views;
         for (int i = 0; i < listSize; i++) {
             final int index = i;
@@ -311,7 +390,8 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
             buttonImgParams.topMargin = dp2px(this, 75);
             buttonImg.setLayoutParams(buttonImgParams);
             buttonImg.setImageResource(R.drawable.more);
-            buttonImg.setOnClickListener(new View.OnClickListener() {
+            layoutButton.addView(buttonImg);
+            layoutButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     final String thisItemImg = items.get(index).get("comImgPath");
@@ -340,8 +420,6 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
                     }, 30);
                 }
             });
-
-            layoutButton.addView(buttonImg);
 
             //Divider
             View line_1 = new View(ShoppingMainActivity.this);
