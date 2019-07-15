@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CommodityOrderTemplateRepository extends JpaRepository<CommodityOrderTemplate, Long> {
     List<CommodityOrderTemplate> findCommodityOrderTemplatesByButtonIdAndIsActive(Long buttonId, Boolean isActive);
+    List<CommodityOrderTemplate> findCommodityOrderTemplatesByTempId(Long tempId);
 }

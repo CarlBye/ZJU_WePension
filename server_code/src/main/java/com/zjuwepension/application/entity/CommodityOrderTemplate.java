@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class CommodityOrderTemplate {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "tempId")
     private Long tempId;
     private Long buttonId;
     private Long comId;

@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class ButtonFurn {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "bindId")
     private Long bindId;
     private Long furnId;
     private Long buttonId;

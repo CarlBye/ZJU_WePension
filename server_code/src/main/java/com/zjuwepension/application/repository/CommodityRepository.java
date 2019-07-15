@@ -10,4 +10,5 @@ import java.util.List;
 public interface CommodityRepository extends JpaRepository<Commodity, Long> {
     List<Commodity> findCommoditiesByComNo(String comNo);
     List<Commodity> findCommoditiesByComId(Long comId);
+    List<Commodity> findCommoditiesByComNameContaining(String comName);
 }
