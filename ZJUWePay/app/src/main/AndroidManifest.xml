@@ -35,6 +35,7 @@
         <activity android:name=".Activities.ForShopping.ItemDetailsActivity"/>
         <activity android:name=".Activities.ForInfo.MyOrder.MyOrderActivity"/>
         <activity android:name=".Activities.ForInfo.MyOrder.OrderDetailActivity"/>
+        <activity android:name=".Activities.ForInfo.MyButton.ButtonDetailActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
