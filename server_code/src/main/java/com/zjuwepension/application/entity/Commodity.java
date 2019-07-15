@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Commodity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "comId")
     private Long comId;
     private Long price;
     private Long stack;

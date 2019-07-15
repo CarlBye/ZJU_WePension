@@ -48,4 +48,13 @@ public class CommodityOrderTemplateServiceImpl implements CommodityOrderTemplate
             return null;
         return commodityService.findCommodityByComId(template.getComId());
     }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public CommodityOrderTemplate findTemplateByTemplateId(Long tempId){
+        List<CommodityOrderTemplate> list = commodityOrderTemplateRepository.findCommodityOrderTemplatesByTempId(tempId);
+        if (null != list && 1 == list.size())
+            return list.get(0);
+        return null;
+    }
 }

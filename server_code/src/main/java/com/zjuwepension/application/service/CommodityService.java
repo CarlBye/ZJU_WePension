@@ -11,4 +11,8 @@ public interface CommodityService {
     Boolean hasCommodityOrderTemplate(Long buttonId, Long comId);
     List<Commodity> getAllComList();
     Commodity findCommodityByComId(Long comId);
+    String updateCommodityByComId(Long comId, Long stack, Long price);
+    String addOrderFromTemplateByButtonId(Long buttonId);
+    List<Commodity> getComListContaningName(String comName);
+    Commodity findComByTemplateId(Long templateId);
 }

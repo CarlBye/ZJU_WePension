@@ -83,17 +83,52 @@ public class FurnitureController {
                     furnElement.addProperty("furnId", furniture.getFurnId().toString());
                     furnElement.addProperty("furnName", furniture.getFurnName());
                     furnElement.addProperty("furnType", new Long(furniture.getFurnType().ordinal()).toString());
+                    furnElement.addProperty("furnState", new Long(furniture.getState().ordinal()).toString());
                     result.get("furnList").getAsJsonObject().get("list").getAsJsonArray().add(furnElement);
                 }
             } else {
                 result.addProperty("IsSuccess", false);
                 result.addProperty("ErrorInfo", "非法用户");
-                result.addProperty("buttonList", "");
+                result.addProperty("furnList", "");
             }
         } else {
             result.addProperty("IsSuccess", false);
             result.addProperty("ErrorInfo", "参数不完整");
-            result.addProperty("buttonList", "");
+            result.addProperty("furnList", "");
+        }
+        return result.toString();
+    }
+
+    @PostMapping("/unbindList")
+    public String getUnbindFurnList(@RequestBody String body){
+        JsonObject jsonData = new JsonParser().parse(body).getAsJsonObject();
+        JsonObject result = new JsonObject();
+        if (jsonData.has("curId")) {
+            User user = userService.findUserById(jsonData.get("curId").getAsLong());
+            if (null != user) {
+                result.addProperty("IsSuccess", true);
+                result.addProperty("ErrorInfo", "");
+                result.add("furnList", new JsonObject());
+                List<Furniture> list = userFurnService.findUnbindUserFurnsByUserId(jsonData.get("curId").getAsLong());
+                result.get("furnList").getAsJsonObject().addProperty("num", new Long(list.size()).toString());
+                result.get("furnList").getAsJsonObject().add("list", new JsonArray());
+                for (int i = 0; i < list.size(); i++){
+                    JsonObject furnElement = new JsonObject();
+                    furnElement.addProperty("furnId", list.get(i).getFurnId().toString());
+                    furnElement.addProperty("furnName", list.get(i).getFurnName());
+                    furnElement.addProperty("furnType", new Long(list.get(i).getFurnType().ordinal()).toString());
+                    furnElement.addProperty("furnState", new Long(list.get(i).getState().ordinal()).toString());
+                    result.get("furnList").getAsJsonObject().get("list").getAsJsonArray().add(furnElement);
+                }
+            } else {
+                result.addProperty("ErrorInfo", "非法用户");
+            }
+        } else {
+            result.addProperty("ErrorInfo", "参数不完整");
+        }
+        if (!result.get("ErrorInfo").getAsString().equals("")) {
+            result.addProperty("IsSuccess", false);
+            result.addProperty("furnList", "");
         }
         return result.toString();
     }

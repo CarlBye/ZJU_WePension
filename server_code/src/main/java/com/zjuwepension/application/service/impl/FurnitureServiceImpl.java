@@ -1,6 +1,7 @@
 package com.zjuwepension.application.service.impl;
 
 import com.zjuwepension.application.entity.ButtonFurn;
+import com.zjuwepension.application.entity.FurnStateType;
 import com.zjuwepension.application.entity.Furniture;
 import com.zjuwepension.application.repository.FurnitureRepository;
 import com.zjuwepension.application.service.ButtonFurnService;
@@ -47,5 +48,25 @@ public class FurnitureServiceImpl implements FurnitureService {
         if (null == buttonFurn)
             return null;
         return findFurnByFurnId(buttonFurn.getFurnId());
+    }
+
+    @Transactional(rollbackFor = Exception.class, isolation = Isolation.READ_COMMITTED)
+    @Override
+    public String changFurnStateByButtonId(Long buttonId){
+        Furniture furniture = findActiveFurnByButtonId(buttonId);
+        if (null == furniture)
+            return "不存在该家具";
+        switch (furniture.getState()){
+            case OFF:
+                furniture.setState(FurnStateType.ON);
+                break;
+            case ON:
+                furniture.setState(FurnStateType.OFF);
+                break;
+        }
+        furniture = updateFurn(furniture);
+        if (null == furniture)
+            return "更新失败";
+        return "";
     }
 }

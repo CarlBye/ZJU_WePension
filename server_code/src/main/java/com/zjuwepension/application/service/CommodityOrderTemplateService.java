@@ -8,4 +8,5 @@ public interface CommodityOrderTemplateService {
     CommodityOrderTemplate updateTemplate(CommodityOrderTemplate template);
     CommodityOrderTemplate findActiveTemplateByButtonId(Long buttonId);
     Commodity  findActiveCommodityByButtonId(Long buttonId);
+    CommodityOrderTemplate findTemplateByTemplateId(Long tempId);
 }

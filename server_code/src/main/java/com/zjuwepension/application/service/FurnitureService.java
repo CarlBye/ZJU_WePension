@@ -7,4 +7,5 @@ public interface FurnitureService {
     Furniture updateFurn(Furniture furn);
     Furniture findFurnByFurnId(Long id);
     Furniture findActiveFurnByButtonId(Long buttonId);
+    String changFurnStateByButtonId(Long buttonId);
 }

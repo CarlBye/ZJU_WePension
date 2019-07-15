@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class CommodityOrder {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "orderId")
     private Long orderId;
     private Long userId;
     private Long tempId;
