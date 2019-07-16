@@ -45,6 +45,7 @@ public class LogoutActivity extends AppCompatActivity implements Constant, View.
                 PublicData.setCurrentUserName(null);
                 PublicData.setCurrentUserDescription(null);
                 PublicData.setUserFace(0);
+                PublicData.setCurrentUserId(0);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override

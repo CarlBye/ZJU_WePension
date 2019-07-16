@@ -172,6 +172,7 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
     private void LoadButtonInfo() {
         //build button views;
         for (int i = 0; i < listSize; i++) {
+            final int index = i;
             //main layout for a button info
             LinearLayout layoutMain = new LinearLayout(MyButtonActivity.this);
             LinearLayout.LayoutParams layoutMainParams = new LinearLayout.LayoutParams(
@@ -364,6 +365,25 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             detailsText.setLayoutParams(detailsTextParams);
             detailsText.setTextSize(18);
             detailsText.setText("查看详情");
+
+            layoutDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //家具
+                    if(buttons.get(index).get("buttonType").equals("2")) {
+                        PublicData.setFurnDetailButtonId(buttons.get(index).get("buttonId"));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MyButtonActivity.this, FurnDetailActivity.class);
+                                startActivity(intent);
+                                finish();
+                                overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+                            }
+                        }, 30);
+                    }
+                }
+            });
 
             //Divider
             View line_1 = new View(MyButtonActivity.this);

@@ -134,6 +134,19 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
                 String loginId = etLoginId.getText().toString();
                 String loginPwd = etLoginPwd.getText().toString();
 
+                if(loginId.equals("")) {
+                    System.out.println("I'm here");
+                    Toast errMsg = Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 500);
+                    errMsg.show();
+                    break;
+                } else if(loginPwd.equals("")) {
+                    Toast errMsg = Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 500);
+                    errMsg.show();
+                    break;
+                }
+
                 Map loginInfo = new HashMap();
                 loginInfo.put("logName", loginId);
                 loginInfo.put("logPwd", loginPwd);

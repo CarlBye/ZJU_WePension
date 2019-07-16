@@ -8,6 +8,9 @@ public class PublicData {
     private static boolean log_state;
     private static int user_face = 0, current_user_id = 0;
 
+    //cache for furn detail
+    private static String furnDetailButtonId;
+
     //cache for register
     private static String regNameTemp, regPwd1Tmp, regPwd2Temp, regPhoneTemp, regEmailTemp, regDescriptionTemp;
 
@@ -15,10 +18,85 @@ public class PublicData {
     private static String buttonIdTemp = "未选择按钮", buttonNameTemp = "未选择按钮";
     private static String furnitureIdTemp = "未选择家具", furnitureNameTemp = "未选择家具";
     private static String furnitureTypeTemp = "0";
-    private static String comId, comAmount, comPhone, comAddress, comSendName, comName, comPrice, comImg;
+    private static String comId, comAmount = "", comPhone, comAddress, comSendName, comName, comPrice = "", comImg;
 
     //cache for item info
     private static String itemImgUrlStr, itemName, itemId, itemPrice, itemStack, itemDescription;
+
+    //cache for order info
+    private static String orderImgUrlStr, orderName, orderId, orderPrice, orderDes, orderDate, orderAmount, orderState;
+
+    public static String getFurnDetailButtonId() {
+        return furnDetailButtonId;
+    }
+
+    public static void setFurnDetailButtonId(String id) {
+        furnDetailButtonId = id;
+    }
+
+    public static String getOrderAmount() {
+        return orderAmount;
+    }
+
+    public static String getOrderDate() {
+        return orderDate;
+    }
+
+    public static String getOrderDes() {
+        return orderDes;
+    }
+
+    public static String getOrderId() {
+        return orderId;
+    }
+
+    public static String getOrderImgUrlStr() {
+        return orderImgUrlStr;
+    }
+
+    public static String getOrderName() {
+        return orderName;
+    }
+
+    public static String getOrderPrice() {
+        return orderPrice;
+    }
+
+    public static String getOrderState() {
+        return orderState;
+    }
+
+    public static void setOrderAmount(String orderAmount) {
+        PublicData.orderAmount = orderAmount;
+    }
+
+    public static void setOrderDate(String orderDate) {
+        PublicData.orderDate = orderDate;
+    }
+
+    public static void setOrderDes(String orderDes) {
+        PublicData.orderDes = orderDes;
+    }
+
+    public static void setOrderId(String orderId) {
+        PublicData.orderId = orderId;
+    }
+
+    public static void setOrderImgUrlStr(String orderImgUrlStr) {
+        PublicData.orderImgUrlStr = orderImgUrlStr;
+    }
+
+    public static void setOrderName(String orderName) {
+        PublicData.orderName = orderName;
+    }
+
+    public static void setOrderPrice(String orderPrice) {
+        PublicData.orderPrice = orderPrice;
+    }
+
+    public static void setOrderState(String orderState) {
+        PublicData.orderState = orderState;
+    }
 
     public static void cancelItem() {
         comId = comAmount = comPhone = comAddress = comSendName = comName = comPrice = comImg = "";

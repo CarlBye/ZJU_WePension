@@ -73,8 +73,7 @@
                 android:background="#000"/>
 
             <EditText
-                android:id="@+id/et_loginId"
-                android:cursorVisible="false"
+                android:id="@+id/et_searchTag"
                 android:inputType="text"
                 android:hint="输入商品名搜索"
                 android:textSize="15sp"
@@ -83,8 +82,6 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="10dp"
                 android:singleLine="true"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
                 android:background="@drawable/rounded_rec_input_shape_search"
                 android:alpha="0.5" />
 
@@ -98,6 +95,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_searchConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="搜索"

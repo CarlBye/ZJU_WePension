@@ -175,9 +175,9 @@ public class ChooseButtonActivity extends AppCompatActivity implements Constant,
         for (int i = 0; i < listSize; i++) {
             final int index = i;
             //filter
-            if(!buttons.get(i).get("buttonType").equals("0")) {
-                continue;
-            }
+//            if(!buttons.get(i).get("buttonType").equals("0")) {
+//                continue;
+//            }
             //main layout for a button info
             LinearLayout layoutMain = new LinearLayout(ChooseButtonActivity.this);
             LinearLayout.LayoutParams layoutMainParams = new LinearLayout.LayoutParams(

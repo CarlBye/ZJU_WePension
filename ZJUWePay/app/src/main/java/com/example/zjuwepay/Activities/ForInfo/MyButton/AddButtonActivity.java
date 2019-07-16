@@ -163,6 +163,7 @@ public class AddButtonActivity extends AppCompatActivity implements Constant, Vi
                     finish();
                     overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
                 }
+                break;
         }
     }
 }
