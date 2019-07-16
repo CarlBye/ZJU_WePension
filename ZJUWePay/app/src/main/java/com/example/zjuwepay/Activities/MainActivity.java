@@ -12,6 +12,7 @@ import com.example.zjuwepay.Activities.ForUser.SettingActivity;
 import com.example.zjuwepay.Constant;
 import com.example.zjuwepay.PublicData;
 import com.example.zjuwepay.R;
+import com.igexin.sdk.PushManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        PushManager.getInstance().initialize(getApplicationContext(), com.example.zjuwepay.Service.DemoPushService.class);
+//        PushManager.getInstance().registerPushIntentService(getApplicationContext(), com.example.zjuwepay.Service.DemoIntentService.class);
         init();
     }
 

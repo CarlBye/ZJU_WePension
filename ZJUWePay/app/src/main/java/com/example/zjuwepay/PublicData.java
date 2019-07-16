@@ -8,6 +8,9 @@ public class PublicData {
     private static boolean log_state;
     private static int user_face = 0, current_user_id = 0;
 
+    //cache for furn detail
+    private static String furnDetailButtonId;
+
     //cache for register
     private static String regNameTemp, regPwd1Tmp, regPwd2Temp, regPhoneTemp, regEmailTemp, regDescriptionTemp;
 
@@ -22,6 +25,14 @@ public class PublicData {
 
     //cache for order info
     private static String orderImgUrlStr, orderName, orderId, orderPrice, orderDes, orderDate, orderAmount, orderState;
+
+    public static String getFurnDetailButtonId() {
+        return furnDetailButtonId;
+    }
+
+    public static void setFurnDetailButtonId(String id) {
+        furnDetailButtonId = id;
+    }
 
     public static String getOrderAmount() {
         return orderAmount;
