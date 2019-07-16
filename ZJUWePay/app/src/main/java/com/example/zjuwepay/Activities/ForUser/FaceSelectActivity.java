@@ -44,11 +44,20 @@ public class FaceSelectActivity extends AppCompatActivity implements Constant {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Intent intent = new Intent(FaceSelectActivity.this, RegisterActivity.class);
-                            intent.putExtra("face_id", temp_id);
-                            startActivity(intent);
-                            finish();
-                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                            if(pageBackTo == 1) {
+                                Intent intent = new Intent(FaceSelectActivity.this, RegisterActivity.class);
+                                intent.putExtra("face_id", temp_id);
+                                startActivity(intent);
+                                finish();
+                                overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                            } else if(pageBackTo == 2) {
+                                Intent intent = new Intent(FaceSelectActivity.this, SettingActivity.class);
+                                intent.putExtra("face_id", temp_id);
+                                startActivity(intent);
+                                finish();
+                                overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                            }
+
                         }
                     }, 0);
                 }
@@ -65,6 +74,11 @@ public class FaceSelectActivity extends AppCompatActivity implements Constant {
                     public void run() {
                         if(pageBackTo == 1) {
                             Intent intent = new Intent(FaceSelectActivity.this, RegisterActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
+                        } else if (pageBackTo == 2) {
+                            Intent intent = new Intent(FaceSelectActivity.this,SettingActivity.class);
                             startActivity(intent);
                             finish();
                             overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);

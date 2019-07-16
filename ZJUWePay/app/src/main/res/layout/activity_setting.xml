@@ -6,17 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/btn_backToMenu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/back">
 
         </ImageView>
@@ -25,9 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginLeft="125dp"/>
+            android:layout_marginLeft="120dp"/>
 
     </LinearLayout>
 
@@ -43,23 +43,26 @@
         android:background="#000"/>
 
     <LinearLayout
+        android:id="@+id/btn_setFace"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
-        <com.example.zjuwepay.Components.RoundImageView
+        <com.example.zjuwepay.Components.MyImageView
             android:id="@+id/user_face"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:src="@drawable/default_face"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="75dp"
             />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="15dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/refresh"/>
 
@@ -68,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="点击更换头像"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical" />
 
@@ -86,10 +89,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="修改用户名"
+            android:text="丨修改用户名"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:id="@+id/btn_setNameConfirm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/ok"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 
@@ -129,15 +143,26 @@
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="25dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="修改密码"
+            android:text="丨修改密码"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:id="@+id/btn_setPwdConfirm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="140dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/ok"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 
@@ -157,7 +182,7 @@
 
         <EditText
             android:id="@+id/et_oldPwd"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="请输入原密码"
@@ -186,7 +211,7 @@
 
         <EditText
             android:id="@+id/et_newPwd1"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="请输入新密码"
@@ -215,7 +240,7 @@
 
         <EditText
             android:id="@+id/et_newPwd2"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:hint="请再输入一次新密码"
@@ -235,15 +260,26 @@
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="25dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="修改个性签名"
+            android:text="丨修改个性签名"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical" />
+
+        <ImageView
+            android:id="@+id/btn_setDesConfirm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/ok"
+            android:textSize="20sp"/>
 
     </LinearLayout>
 
@@ -277,15 +313,5 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/btn_regConfirm"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/ok"
-        android:textSize="20sp"/>
 
 </LinearLayout>

@@ -44,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
 
     //components
     private EditText etRegName, etRegPwd1, etRegPwd2, etRegPhone, etPwdEmail, etDescription;
-    private TextView tvSendCode;
     private ImageView btnRegConfirm, btnBackToMenu, iv_img;
     private LinearLayout btnSetFace;
     private Gson myPack = new Gson();
@@ -157,7 +156,6 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                     @Override
                     public void run() {
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        intent.putExtra("keepOpen", 1);
                         startActivity(intent);
                         finish();
                         overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
@@ -231,7 +229,10 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                 PublicData.setRegEmailTemp(null);
                 PublicData.setRegDescriptionTemp(null);
 
-                while(!msgKey) {}
+                while(!msgKey) {
+                    SystemClock.sleep(10);
+                    System.out.println("tick");
+                }
 
                 String thisMsg = PublicData.getFeedback();
                 if(thisMsg == "") {

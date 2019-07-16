@@ -92,6 +92,7 @@
         <activity android:name=".Activities.ForInfo.MyOrder.MyOrderActivity"/>
         <activity android:name=".Activities.ForInfo.MyOrder.OrderDetailActivity"/>
         <activity android:name=".Activities.ForInfo.MyButton.FurnDetailActivity"/>
+        <activity android:name=".Activities.ForInfo.MyButton.BuyDetailActivity"/>
 
         <!--<service-->
             <!--android:name="com.example.zjuwepay.Service.DemoPushService"-->

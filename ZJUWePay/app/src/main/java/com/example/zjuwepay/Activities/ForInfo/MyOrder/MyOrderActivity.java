@@ -191,7 +191,7 @@ public class MyOrderActivity extends AppCompatActivity implements Constant, View
             //text view for order state
             TextView stateText = new TextView(MyOrderActivity.this);
             LinearLayout.LayoutParams stateTextParams = new LinearLayout.LayoutParams(
-                    dp2px(this, 240),
+                    dp2px(this, 210),
                     dp2px(this, 40));
             stateTextParams.leftMargin = dp2px(this, 10);
             stateTextParams.topMargin = dp2px(this, 10);
@@ -227,7 +227,7 @@ public class MyOrderActivity extends AppCompatActivity implements Constant, View
                     ViewGroup.LayoutParams.MATCH_PARENT);
             layoutDetailsParams.width = dp2px(this, 130);
             layoutDetailsParams.height = dp2px(this, 40);
-            layoutDetailsParams.leftMargin = dp2px(this, 20);
+            layoutDetailsParams.leftMargin = dp2px(this, 0);
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);

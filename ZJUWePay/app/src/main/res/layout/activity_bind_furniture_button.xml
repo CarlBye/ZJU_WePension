@@ -6,18 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/btn_backToButtonBindMain"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/back">
 
         </ImageView>
@@ -26,9 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="绑定家具按钮"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginLeft="80dp"/>
 
     </LinearLayout>
 
@@ -43,16 +42,18 @@
         android:layout_marginTop="2.5dp"
         android:background="#000"/>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="100dp"
             android:src="@drawable/import_file"/>
 
         <TextView
@@ -69,14 +70,15 @@
     <LinearLayout
         android:id="@+id/ll_chooseFurniture"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="100dp"
             android:src="@drawable/import_file"/>
 
         <TextView
@@ -93,6 +95,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
         android:background="#000"/>
 
     <View
@@ -105,6 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp">
 
         <ImageView
@@ -181,6 +185,20 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/down" />
+
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -281,7 +299,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         android:background="@drawable/rounded_rec_confirm_shape">

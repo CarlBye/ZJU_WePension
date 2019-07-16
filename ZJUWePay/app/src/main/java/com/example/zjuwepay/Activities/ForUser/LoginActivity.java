@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
     //json helper
     private Gson myPack = new Gson();
 
-    private void handleLogin(Map<Object, Object> map) {
+    private void handleLogin(final Map<Object, Object> map) {
         String params = myPack.toJson(map);
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
         RequestBody requestBody = RequestBody.create(mediaType, params);
@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
                     PublicData.setUserFace(Integer.parseInt((String)responseInfo.get("curFaceId")));
                     PublicData.setCurrentUserId(Integer.parseInt((String)responseInfo.get("curId")));
                     PublicData.setCurrentUserDescription((String)responseInfo.get("curDescription"));
+                    PublicData.setCurrent_user_pwd((String)map.get("logPwd"));
                     msgKey = true;
 
                 } else {
@@ -137,12 +138,12 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
                 if(loginId.equals("")) {
                     System.out.println("I'm here");
                     Toast errMsg = Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT);
-                    errMsg.setGravity(Gravity.BOTTOM, 0, 500);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 200);
                     errMsg.show();
                     break;
                 } else if(loginPwd.equals("")) {
                     Toast errMsg = Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT);
-                    errMsg.setGravity(Gravity.BOTTOM, 0, 500);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 200);
                     errMsg.show();
                     break;
                 }
@@ -166,7 +167,7 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
                 ivUserFace.setImageResource(faces[PublicData.getUserFace()]);
 
                 Toast errMsg = Toast.makeText(LoginActivity.this, thisMsg, Toast.LENGTH_LONG);
-                errMsg.setGravity(Gravity.BOTTOM, 0, 500);
+                errMsg.setGravity(Gravity.BOTTOM, 0, 200);
                 errMsg.show();
 
                 SystemClock.sleep(1000);

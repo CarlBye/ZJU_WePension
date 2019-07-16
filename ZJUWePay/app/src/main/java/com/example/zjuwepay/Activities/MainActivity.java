@@ -98,15 +98,27 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
                 break;
 
             case R.id.btn_setting:
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
-                    }
-                }, 0);
+                if(!PublicData.getLogState()) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                        }
+                    }, 0);
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+                        }
+                    }, 0);
+                }
                 break;
 
             case R.id.user_face:

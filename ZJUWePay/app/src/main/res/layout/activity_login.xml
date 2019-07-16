@@ -6,17 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/btn_backToMenu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/back">
 
         </ImageView>
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="用户登录"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_gravity="center"
             android:layout_marginLeft="100dp"/>
 
@@ -73,7 +73,7 @@
                 android:id="@+id/et_loginId"
                 android:inputType="text"
                 android:layout_margin="10dp"
-                android:hint="请输入昵称/注册邮箱/注册手机号"
+                android:hint="请输入昵称/邮箱/手机号"
                 android:paddingLeft="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             android:orientation="horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="0dp">
 
             <ImageView
                 android:layout_width="30dp"
@@ -134,7 +134,7 @@
             android:id="@+id/btn_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center_horizontal"
             android:textColor="#0E6C9C"
             android:text="没有账号?点击注册"

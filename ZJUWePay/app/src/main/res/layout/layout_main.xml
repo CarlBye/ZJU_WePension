@@ -6,17 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/btn_menu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/menu">
 
         </ImageView>
@@ -25,16 +25,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="养老宝"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_gravity="center"
             android:layout_marginLeft="110dp"/>
 
         <ImageView
             android:id="@+id/btn_setting"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="end|center"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="110dp"
             android:src="@drawable/setting">
 
         </ImageView>
@@ -52,12 +52,12 @@
         android:layout_marginTop="2.5dp"
         android:background="#000"/>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="430dp"
+        android:layout_height="600dp"
         android:orientation="vertical">
 
-    </LinearLayout>
+    </ScrollView>
 
     <View
         android:layout_width="match_parent"
@@ -77,16 +77,17 @@
 
         <ImageView
             android:id="@+id/btn_addAKS"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
             android:src="@drawable/plus" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="点击绑定按钮"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"/>
 

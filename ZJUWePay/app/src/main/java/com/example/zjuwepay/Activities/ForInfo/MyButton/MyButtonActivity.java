@@ -222,8 +222,8 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             nameTextParams.gravity = Gravity.CENTER_VERTICAL;
             nameTextParams.leftMargin = dp2px(this, 12);
             nameText.setLayoutParams(nameTextParams);
-            nameText.setTextSize(20);
-            nameText.setText(buttons.get(i).get("buttonName"));
+            nameText.setTextSize(15);
+            nameText.setText("按钮名称: \n" + buttons.get(i).get("buttonName"));
 
             //inner layout for button id
             LinearLayout layoutId = new LinearLayout(MyButtonActivity.this);
@@ -276,7 +276,7 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             LinearLayout.LayoutParams layoutTypeParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutTypeParams.width = dp2px(this, 230);
+            layoutTypeParams.width = dp2px(this, 210);
             layoutTypeParams.leftMargin = dp2px(this, 10);
             layoutType.setLayoutParams(layoutTypeParams);
             layoutType.setOrientation(LinearLayout.HORIZONTAL);
@@ -286,8 +286,8 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             LinearLayout.LayoutParams typeImgParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            typeImgParams.width = dp2px(this, 35);
-            typeImgParams.height = dp2px(this, 35);
+            typeImgParams.width = dp2px(this, 25);
+            typeImgParams.height = dp2px(this, 25);
             typeImgParams.gravity = Gravity.CENTER_VERTICAL;
             typeImg.setLayoutParams(typeImgParams);
             typeImg.setImageResource(R.drawable.type);
@@ -300,7 +300,7 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             typeTextParams.gravity = Gravity.CENTER_VERTICAL;
             typeTextParams.leftMargin = dp2px(this, 12);
             typeText.setLayoutParams(typeTextParams);
-            typeText.setTextSize(20);
+            typeText.setTextSize(15);
             switch (buttons.get(i).get("buttonType")) {
                 /*
                     0 - 无
@@ -310,23 +310,23 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
                     4 - 体征检测
                  */
                 case "0":
-                    typeText.setText("未绑定");
+                    typeText.setText("丨未绑定");
                     typeText.setTextColor(Color.rgb(0x80, 0x80, 0x80));
                     break;
                 case "1":
-                    typeText.setText("自动下单");
+                    typeText.setText("丨自动下单");
                     typeText.setTextColor(Color.rgb(0x99, 0xCC, 0xFF));
                     break;
                 case "2":
-                    typeText.setText("家具控制");
+                    typeText.setText("丨家具控制");
                     typeText.setTextColor(Color.rgb(0x66, 0xCC, 0x99));
                     break;
                 case "3":
-                    typeText.setText("紧急求助");
+                    typeText.setText("丨紧急求助");
                     typeText.setTextColor(Color.rgb(0xFF, 0x30, 0x00));
                     break;
                 case "4":
-                    typeText.setText("体征检测");
+                    typeText.setText("丨体征检测");
                     typeText.setTextColor(Color.rgb(0xFF, 0xCC, 0x33));
                     break;
             }
@@ -338,7 +338,7 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
                     ViewGroup.LayoutParams.MATCH_PARENT);
             layoutDetailsParams.width = dp2px(this, 130);
             layoutDetailsParams.height = dp2px(this, 40);
-            layoutDetailsParams.leftMargin = dp2px(this, 20);
+            layoutDetailsParams.leftMargin = dp2px(this, 0);
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
@@ -376,6 +376,17 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
                             @Override
                             public void run() {
                                 Intent intent = new Intent(MyButtonActivity.this, FurnDetailActivity.class);
+                                startActivity(intent);
+                                finish();
+                                overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+                            }
+                        }, 30);
+                    } else if(buttons.get(index).get("buttonType").equals("1")) {
+                        PublicData.setBuyDetailButtonId(buttons.get(index).get("buttonId"));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Intent intent = new Intent(MyButtonActivity.this, BuyDetailActivity.class);
                                 startActivity(intent);
                                 finish();
                                 overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);

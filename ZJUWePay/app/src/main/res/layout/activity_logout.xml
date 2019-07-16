@@ -6,17 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/btn_backToMenu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/back">
 
         </ImageView>
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="用户注销"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_gravity="center"
             android:layout_marginLeft="100dp"/>
 
@@ -48,14 +48,14 @@
         android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="65dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/switch_user"/>
 
@@ -65,7 +65,7 @@
             android:text="点击切换账号"
             android:textSize="25sp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="25dp"/>
 
     </LinearLayout>
 

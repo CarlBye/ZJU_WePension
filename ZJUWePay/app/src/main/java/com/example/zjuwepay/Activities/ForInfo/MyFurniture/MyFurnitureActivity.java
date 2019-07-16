@@ -275,7 +275,7 @@ public class MyFurnitureActivity extends AppCompatActivity implements Constant, 
             LinearLayout.LayoutParams layoutTypeParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutTypeParams.width = dp2px(this, 230);
+            layoutTypeParams.width = dp2px(this, 210);
             layoutTypeParams.leftMargin = dp2px(this, 10);
             layoutType.setLayoutParams(layoutTypeParams);
             layoutType.setOrientation(LinearLayout.HORIZONTAL);
@@ -348,7 +348,7 @@ public class MyFurnitureActivity extends AppCompatActivity implements Constant, 
                     ViewGroup.LayoutParams.MATCH_PARENT);
             layoutDetailsParams.width = dp2px(this, 130);
             layoutDetailsParams.height = dp2px(this, 40);
-            layoutDetailsParams.leftMargin = dp2px(this, 20);
+            layoutDetailsParams.leftMargin = dp2px(this, 0);
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
