@@ -32,7 +32,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,12 +52,14 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
     private static final String USER_BUTTONS_ALL = "/api/button/list";
     private static final String USER_FURNITURE_ALL = "/api/furniture/list";
     private static final String USER_ORDERS_ALL = "/api/commodity/orderList";
+    private static final String USER_HELP_ALL = "/api/alert/list";
 
     //components
     private ImageView ivOpen, ivBack, ivSetting, ivAddAks, btnUserFace;
     private SlideMenu slideMenu;
     private LinearLayout llMyButton, llMyFurniture, llMyOrder, llMyHelp, llMain, llMyHealth;
-    private TextView tvUserName, tvUserDescription, tvToMyButton, tvToMyFurn, tvToMyOrder, tvButtonAmount, tvFurnAmount, tvOrderAmount;
+    private TextView tvUserName, tvUserDescription, tvToMyButton, tvToMyFurn, tvToMyOrder,
+                        tvButtonAmount, tvFurnAmount, tvOrderAmount, tvToMyHelp, tvHelpAmount;
 
     //async lock
     private boolean wait_lock = false;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
     private Gson myPack = new Gson();
 
     //Amount info
-    private String buttonAmount, furnAmount, orderAmount;
+    private String buttonAmount, furnAmount, orderAmount, helpAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +133,14 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
                 System.out.println("tick");
             }
             wait_lock = false;
+
+            getHelpAmountInfo();
+            while(!wait_lock){
+                SystemClock.sleep(10);
+                System.out.println("tick");
+            }
+            wait_lock = false;
+
             llMain.setVisibility(View.VISIBLE);
         }
 
@@ -151,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
         tvButtonAmount.setText(buttonAmount);
         tvFurnAmount.setText(furnAmount);
         tvOrderAmount.setText(orderAmount);
+        tvHelpAmount.setText(helpAmount);
 
         //bind listener
         ivBack.setOnClickListener(this);
@@ -304,6 +314,54 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
 
                 //get button amount
                 orderAmount = (String)orderList.get("num");
+
+                wait_lock = true;
+
+                Log.d(TAG, "onResponse: " + mainInfo);
+            }
+        });
+    }
+
+    private void getHelpAmountInfo() {
+        int idForFetch = PublicData.getCurrentUserId();
+
+        Map map = new HashMap();
+        map.put("curId", idForFetch);
+
+        String params = myPack.toJson(map);
+        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+        RequestBody requestBody = RequestBody.create(mediaType, params);
+
+        Request request = new Request.Builder()
+                .url(URL_ROOT + USER_HELP_ALL)
+                .post(requestBody)
+                .build();
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.d(TAG, "onFailure: " + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d(TAG, response.protocol() + " " +response.code() + " " + response.message());
+                Headers headers = response.headers();
+                for (int i = 0; i < headers.size(); i++) {
+                    Log.d(TAG, headers.name(i) + ":" + headers.value(i));
+                }
+
+                String mainInfo = response.body().string();
+
+                Map responseInfo;
+                JsonObject jsonObject = new JsonParser().parse(mainInfo).getAsJsonObject();
+                responseInfo = myPack.fromJson(jsonObject, Map.class);
+
+                //get button list map
+                Map helpList = (Map)responseInfo.get("alertHistory");
+
+                //get button amount
+                helpAmount = (String)helpList.get("num");
 
                 wait_lock = true;
 
