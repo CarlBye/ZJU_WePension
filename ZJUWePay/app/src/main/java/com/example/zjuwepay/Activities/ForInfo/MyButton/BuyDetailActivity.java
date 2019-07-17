@@ -89,7 +89,7 @@ public class BuyDetailActivity extends AppCompatActivity implements Constant, Vi
         //bind image view
         ivBtnBackToMyButton = findViewById(R.id.btn_backToMyButton);
         ivComImg = findViewById(R.id.iv_thisItemImg);
-//        ivComImg.setImageURL(comImg);
+        ivComImg.setImageURL(comImg);
 
         //bind text view
         tvButtonName = findViewById(R.id.tv_buttonName);
@@ -188,7 +188,7 @@ public class BuyDetailActivity extends AppCompatActivity implements Constant, Vi
 //                comImg = (String)responseInfo.get("");
 
                 comName = (String)responseInfo.get("comName");
-                System.out.println(comName);
+                comImg = (String)responseInfo.get("comImgPath");
                 comId = (String)responseInfo.get("comId");
                 comNum = (String)responseInfo.get("comNum");
                 comPrice = (String)responseInfo.get("comPrice");

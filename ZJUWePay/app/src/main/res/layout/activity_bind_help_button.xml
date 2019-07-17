@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="丨绑定家具按钮"
+            android:text="丨绑定求助按钮"
             android:textSize="20sp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"/>
@@ -61,31 +61,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="点击选择按钮"
-            android:textSize="20sp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_chooseFurniture"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="120dp"
-            android:src="@drawable/import_file"/>
-
-        <TextView
-            android:id="@+id/tv_chooseFurniture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点击选择家具"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical" />
@@ -208,52 +183,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/furniture"
-            android:layout_marginTop="15dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="当前选择家具"
-            android:textSize="30sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="190dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="30dp">
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp">
 
             <ImageView
-                android:id="@+id/iv_thisFurnitureType"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/unknown"
-                android:layout_marginTop="15dp"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/help"/>
 
-            <TextView
-                android:id="@+id/tv_thisFurnitureName"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/et_helpPhone"
+                android:inputType="phone"
+                android:layout_margin="10dp"
+                android:hint="请输入紧急联系人联系方式"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp" />
+                android:layout_gravity="center_vertical"
+                android:singleLine="true"
+                android:background="@drawable/rounded_rec_input_shape"
+                android:alpha="0.5"/>
 
         </LinearLayout>
 
@@ -262,26 +220,32 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/info"
-                android:layout_marginTop="15dp"/>
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/edit_talk"/>
 
-            <TextView
-                android:id="@+id/tv_thisFurnitureId"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/et_helpMsg"
+                android:inputType="text"
+                android:layout_margin="10dp"
+                android:hint="请输入紧急留言"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp" />
+                android:layout_gravity="center_vertical"
+                android:singleLine="true"
+                android:background="@drawable/rounded_rec_input_shape"
+                android:alpha="0.5"/>
 
         </LinearLayout>
 
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -295,7 +259,7 @@
         android:background="#000"/>
 
     <LinearLayout
-        android:id="@+id/ll_BindFurnitureConfirm"
+        android:id="@+id/ll_BindHelpConfirm"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:orientation="horizontal"

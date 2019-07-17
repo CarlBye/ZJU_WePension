@@ -254,8 +254,8 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
             LinearLayout.LayoutParams itemImgParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            itemImgParams.width = dp2px(this, 90);
-            itemImgParams.height = dp2px(this, 90);
+            itemImgParams.width = dp2px(this, 110);
+            itemImgParams.height = dp2px(this, 110);
             itemImgParams.topMargin = dp2px(this, 10);
             itemImgParams.leftMargin = dp2px(this, 10);
             itemImg.setLayoutParams(itemImgParams);

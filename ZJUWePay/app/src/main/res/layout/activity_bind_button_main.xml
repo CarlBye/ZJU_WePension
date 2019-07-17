@@ -16,7 +16,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:src="@drawable/back">
 
         </ImageView>
@@ -24,10 +24,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绑定按钮"
+            android:text="丨绑定按钮"
             android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
 
@@ -64,7 +64,7 @@
             android:text="绑定购买按钮"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="30dp"/>
 
     </LinearLayout>
 
@@ -90,7 +90,7 @@
             android:text="绑定家具按钮"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="30dp"/>
 
     </LinearLayout>
 
@@ -116,7 +116,7 @@
             android:text="绑定求助按钮"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="30dp"/>
 
     </LinearLayout>
 
@@ -142,7 +142,7 @@
             android:text="绑定体征按钮"
             android:textSize="20sp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="30dp"/>
 
     </LinearLayout>
 

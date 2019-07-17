@@ -275,7 +275,7 @@ public class MyFurnitureActivity extends AppCompatActivity implements Constant, 
             LinearLayout.LayoutParams layoutTypeParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutTypeParams.width = dp2px(this, 210);
+            layoutTypeParams.width = dp2px(this, 220);
             layoutTypeParams.leftMargin = dp2px(this, 10);
             layoutType.setLayoutParams(layoutTypeParams);
             layoutType.setOrientation(LinearLayout.HORIZONTAL);

@@ -191,7 +191,7 @@ public class MyOrderActivity extends AppCompatActivity implements Constant, View
             //text view for order state
             TextView stateText = new TextView(MyOrderActivity.this);
             LinearLayout.LayoutParams stateTextParams = new LinearLayout.LayoutParams(
-                    dp2px(this, 210),
+                    dp2px(this, 220),
                     dp2px(this, 40));
             stateTextParams.leftMargin = dp2px(this, 10);
             stateTextParams.topMargin = dp2px(this, 10);

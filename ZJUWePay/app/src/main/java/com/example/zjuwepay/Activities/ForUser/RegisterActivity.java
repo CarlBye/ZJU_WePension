@@ -178,37 +178,37 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
 
                 if(face_user_chosen == 0) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请选择头像", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regName.equals("")) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regPwd1.equals("")) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regPwd2.equals("")) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入第二次密码", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(!regPwd1.equals(regPwd2)) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "两次密码不一致", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regPhone.length() != 11 || !phone.matcher(regPhone).matches()) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入正确格式的手机号", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(!email.matcher(regEmail).matches()) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入正确格式的邮箱", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 }
@@ -240,7 +240,7 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                 }
 
                 Toast errMsg = Toast.makeText(RegisterActivity.this, thisMsg, Toast.LENGTH_LONG);
-                errMsg.setGravity(Gravity.BOTTOM, 0, 120);
+                errMsg.setGravity(Gravity.BOTTOM, 0, 10);
                 errMsg.show();
 
                 SystemClock.sleep(1000);

@@ -24,7 +24,10 @@ public class PublicData {
     private static String buttonIdTemp = "未选择按钮", buttonNameTemp = "未选择按钮";
     private static String furnitureIdTemp = "未选择家具", furnitureNameTemp = "未选择家具";
     private static String furnitureTypeTemp = "0";
-    private static String comId, comAmount = "", comPhone, comAddress, comSendName, comName, comPrice = "", comImg;
+    private static String comId = "", comAmount = "", comPhone = "", comAddress = "", comSendName = "", comName = "", comPrice = "", comImg;
+
+    //cache for help info
+    private static String helpPhone, helpMsg;
 
     //cache for item info
     private static String itemImgUrlStr, itemName, itemId, itemPrice, itemStack, itemDescription;
@@ -34,6 +37,22 @@ public class PublicData {
 
     public static String getCurrent_user_pwd() {
         return current_user_pwd;
+    }
+
+    public static String getHelpMsg() {
+        return helpMsg;
+    }
+
+    public static String getHelpPhone() {
+        return helpPhone;
+    }
+
+    public static void setHelpMsg(String helpMsg) {
+        PublicData.helpMsg = helpMsg;
+    }
+
+    public static void setHelpPhone(String helpPhone) {
+        PublicData.helpPhone = helpPhone;
     }
 
     public static void setCurrent_user_pwd(String current_user_pwd) {

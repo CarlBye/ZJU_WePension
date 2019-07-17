@@ -136,14 +136,13 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
                 String loginPwd = etLoginPwd.getText().toString();
 
                 if(loginId.equals("")) {
-                    System.out.println("I'm here");
                     Toast errMsg = Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT);
-                    errMsg.setGravity(Gravity.BOTTOM, 0, 200);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errMsg.show();
                     break;
                 } else if(loginPwd.equals("")) {
                     Toast errMsg = Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT);
-                    errMsg.setGravity(Gravity.BOTTOM, 0, 200);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errMsg.show();
                     break;
                 }
@@ -167,7 +166,7 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
                 ivUserFace.setImageResource(faces[PublicData.getUserFace()]);
 
                 Toast errMsg = Toast.makeText(LoginActivity.this, thisMsg, Toast.LENGTH_LONG);
-                errMsg.setGravity(Gravity.BOTTOM, 0, 200);
+                errMsg.setGravity(Gravity.BOTTOM, 0, 10);
                 errMsg.show();
 
                 SystemClock.sleep(1000);
