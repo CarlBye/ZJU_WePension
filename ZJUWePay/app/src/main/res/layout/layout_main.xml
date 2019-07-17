@@ -116,6 +116,7 @@
                                 android:background="#000"/>
 
                             <LinearLayout
+                                android:id="@+id/tv_toMyButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -129,7 +130,6 @@
                                     android:src="@drawable/fast"/>
 
                                 <TextView
-                                    android:id="@+id/tv_toMyButton"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="10sp"
@@ -201,6 +201,7 @@
                                 android:background="#000"/>
 
                             <LinearLayout
+                                android:id="@+id/tv_toMyFurn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -214,7 +215,6 @@
                                     android:src="@drawable/fast"/>
 
                                 <TextView
-                                    android:id="@+id/tv_toMyFurn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="10sp"
@@ -326,6 +326,7 @@
                                 android:background="#000"/>
 
                             <LinearLayout
+                                android:id="@+id/tv_toMyOrder"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -339,7 +340,6 @@
                                     android:src="@drawable/fast"/>
 
                                 <TextView
-                                    android:id="@+id/tv_toMyOrder"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="10sp"
@@ -411,6 +411,7 @@
                                 android:background="#000"/>
 
                             <LinearLayout
+                                android:id="@+id/tv_toMyHelp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -424,7 +425,6 @@
                                     android:src="@drawable/fast"/>
 
                                 <TextView
-                                    android:id="@+id/tv_toMyHelp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="10sp"

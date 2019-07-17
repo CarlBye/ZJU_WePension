@@ -57,9 +57,8 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
     //components
     private ImageView ivOpen, ivBack, ivSetting, ivAddAks, btnUserFace;
     private SlideMenu slideMenu;
-    private LinearLayout llMyButton, llMyFurniture, llMyOrder, llMyHelp, llMain, llMyHealth;
-    private TextView tvUserName, tvUserDescription, tvToMyButton, tvToMyFurn, tvToMyOrder,
-                        tvButtonAmount, tvFurnAmount, tvOrderAmount, tvToMyHelp, tvHelpAmount;
+    private LinearLayout llMyButton, llMyFurniture, llMyOrder, llMyHelp, llMain, llMyHealth, tvToMyButton, tvToMyFurn, tvToMyOrder, tvToMyHelp;
+    private TextView tvUserName, tvUserDescription, tvButtonAmount, tvFurnAmount, tvOrderAmount, tvHelpAmount;
 
     //async lock
     private boolean wait_lock = false;
@@ -178,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
         tvToMyOrder.setOnClickListener(this);
         tvToMyFurn.setOnClickListener(this);
         tvToMyButton.setOnClickListener(this);
+        tvToMyHelp.setOnClickListener(this);
     }
 
     private void getButtonAmountInfo() {
