@@ -153,6 +153,8 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
         tvButtonAmount = findViewById(R.id.tv_buttonAmount);
         tvFurnAmount = findViewById(R.id.tv_FurnAmount);
         tvOrderAmount = findViewById(R.id.tv_orderAmount);
+        tvHelpAmount = findViewById(R.id.tv_helpAmount);
+        tvToMyHelp = findViewById(R.id.tv_toMyHelp);
 
         //set the name
         tvUserName.setText(PublicData.getCurrentUserName());
@@ -637,6 +639,30 @@ public class MainActivity extends AppCompatActivity implements Constant, View.On
                         @Override
                         public void run() {
                             Intent intent = new Intent(MainActivity.this, MyHealthActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                        }
+                    }, 0);
+                }
+                break;
+
+            case R.id.tv_toMyHelp:
+                if(PublicData.getCurrentUserId() == 0) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                        }
+                    }, 0);
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Intent intent = new Intent(MainActivity.this, MyHelpActivity.class);
                             startActivity(intent);
                             finish();
                             overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
