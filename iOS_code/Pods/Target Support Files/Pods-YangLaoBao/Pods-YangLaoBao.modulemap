@@ -1,0 +1,6 @@
+framework module Pods_YangLaoBao {
+  umbrella header "Pods-YangLaoBao-umbrella.h"
+
+  export *
+  module * { export * }
+}
