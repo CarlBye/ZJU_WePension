@@ -67,14 +67,16 @@
         <!--&lt;!&ndash; 个推SDK配置结束 &ndash;&gt;-->
 
         <activity android:name=".Activities.MainActivity">
+
+        </activity>
+        <activity android:name=".Activities.ForUser.RegisterActivity"/>
+        <activity android:name=".Activities.ForUser.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ForUser.RegisterActivity"/>
-        <activity android:name=".Activities.ForUser.LoginActivity"/>
         <activity android:name=".Activities.ForUser.LogoutActivity"/>
         <activity android:name=".Activities.ForUser.SettingActivity"/>
         <activity android:name=".Activities.ForUser.FaceSelectActivity"/>
