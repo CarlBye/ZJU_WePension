@@ -110,6 +110,18 @@ public class LoginActivity extends AppCompatActivity implements Constant, View.O
     }
 
     private void init() {
+        if(PublicData.getLogState()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("keepOpen", 0);
+                    startActivity(intent);
+                    finish();
+                    overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
+                }
+            }, 30);
+        }
         //bind edit view
         etLoginId       = findViewById(R.id.et_loginId);
         etLoginPwd      = findViewById(R.id.et_loginPwd);
