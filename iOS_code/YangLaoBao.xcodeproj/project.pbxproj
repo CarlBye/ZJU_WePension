@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20D88AA22E05F8900F24644 /* TGDropBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D88A922E05F8800F24644 /* TGDropBoxView.swift */; };
 		D21E6D7F22D6E11700010E72 /* CommodityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21E6D7E22D6E11700010E72 /* CommodityTableViewCell.xib */; };
 		D232B43522D820200044A0F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D232B43422D820200044A0F5 /* LoginViewController.swift */; };
 		D232B43722D8204D0044A0F5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D232B43622D8204D0044A0F5 /* RegisterViewController.swift */; };
@@ -41,7 +42,6 @@
 		D2FD84AE22DD9FB800907435 /* MyFurnitureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD84AC22DD9FB800907435 /* MyFurnitureTableViewCell.swift */; };
 		D2FD84AF22DD9FB800907435 /* MyFurnitureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FD84AD22DD9FB800907435 /* MyFurnitureTableViewCell.xib */; };
 		D2FD84B422DDAD5600907435 /* AddFurnitureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD84B322DDAD5600907435 /* AddFurnitureViewController.swift */; };
-		D2FD84B722DDB39000907435 /* TGDropBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD84B622DDB39000907435 /* TGDropBoxView.swift */; };
 		D2FD84BC22DE049500907435 /* FurnitureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD84BB22DE049500907435 /* FurnitureViewController.swift */; };
 		D2FD84BF22DE050700907435 /* FurnitureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FD84BD22DE050700907435 /* FurnitureTableViewCell.swift */; };
 		D2FD84C022DE050700907435 /* FurnitureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2FD84BE22DE050700907435 /* FurnitureTableViewCell.xib */; };
@@ -73,6 +73,7 @@
 		547803B8A89D25050D6E9740 /* Pods-YangLaoBao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YangLaoBao.debug.xcconfig"; path = "Target Support Files/Pods-YangLaoBao/Pods-YangLaoBao.debug.xcconfig"; sourceTree = "<group>"; };
 		9881B535F25667BA481FF62F /* Pods_YangLaoBao.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YangLaoBao.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5D5B6319F23D0DFFF9FF21 /* Pods-YangLaoBao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YangLaoBao.release.xcconfig"; path = "Target Support Files/Pods-YangLaoBao/Pods-YangLaoBao.release.xcconfig"; sourceTree = "<group>"; };
+		D20D88A922E05F8800F24644 /* TGDropBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGDropBoxView.swift; sourceTree = "<group>"; };
 		D21E6D7E22D6E11700010E72 /* CommodityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommodityTableViewCell.xib; sourceTree = "<group>"; };
 		D232B43422D820200044A0F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D232B43622D8204D0044A0F5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +114,6 @@
 		D2FD84AC22DD9FB800907435 /* MyFurnitureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFurnitureTableViewCell.swift; sourceTree = "<group>"; };
 		D2FD84AD22DD9FB800907435 /* MyFurnitureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFurnitureTableViewCell.xib; sourceTree = "<group>"; };
 		D2FD84B322DDAD5600907435 /* AddFurnitureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFurnitureViewController.swift; sourceTree = "<group>"; };
-		D2FD84B622DDB39000907435 /* TGDropBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TGDropBoxView.swift; path = ../../../MyIOSCodes/TGDropBoxView/TGDropBoxView.swift; sourceTree = "<group>"; };
 		D2FD84BB22DE049500907435 /* FurnitureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureViewController.swift; sourceTree = "<group>"; };
 		D2FD84BD22DE050700907435 /* FurnitureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureTableViewCell.swift; sourceTree = "<group>"; };
 		D2FD84BE22DE050700907435 /* FurnitureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FurnitureTableViewCell.xib; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 		D2FD84B522DDB27B00907435 /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
-				D2FD84B622DDB39000907435 /* TGDropBoxView.swift */,
+				D20D88A922E05F8800F24644 /* TGDropBoxView.swift */,
 			);
 			path = thirdparty;
 			sourceTree = "<group>";
@@ -527,6 +527,7 @@
 				D26AB85822D5C9D6008F9B56 /* CommodityTableViewCell.swift in Sources */,
 				D2DCEC5A22DC14C200A66CAB /* MyButtonTableViewCell.swift in Sources */,
 				D27CCE1A22DA313600EDB420 /* AddButtonViewController.swift in Sources */,
+				D20D88AA22E05F8900F24644 /* TGDropBoxView.swift in Sources */,
 				D2DCEC6322DC28BC00A66CAB /* MyUnboundButtonViewController.swift in Sources */,
 				D2FD84BC22DE049500907435 /* FurnitureViewController.swift in Sources */,
 				D277D64122D437B70088C4BC /* MainViewController.swift in Sources */,
@@ -539,7 +540,6 @@
 				D277D61322D184670088C4BC /* AppDelegate.swift in Sources */,
 				D2FD84C422DE20E700907435 /* AddHelpButtonViewController.swift in Sources */,
 				D2DCEC5D22DC1F8000A66CAB /* AddFurnitureButtonViewController.swift in Sources */,
-				D2FD84B722DDB39000907435 /* TGDropBoxView.swift in Sources */,
 				D2FD84AB22DD973B00907435 /* MyFurnitureViewController.swift in Sources */,
 				D2FD84B422DDAD5600907435 /* AddFurnitureViewController.swift in Sources */,
 				D277D64322D438280088C4BC /* MenuViewController.swift in Sources */,

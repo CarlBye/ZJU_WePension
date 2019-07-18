@@ -74,7 +74,7 @@ class AddFurnitureViewController: UIViewController {
 //            else { NSLog("did hide choices") }
         }
         dropBoxView.didSelectBoxItemHandler = { (row) in
-            //NSLog("selected No.\(row): \(dropBoxView.currentTitle())")
+            print("111111111", dropBoxView.currentTitle())
             switch dropBoxView.currentTitle() {
             case "灯具":
                 self.furnitureType = "1"
@@ -93,6 +93,7 @@ class AddFurnitureViewController: UIViewController {
         self.view.addSubview(dropBoxView)
         
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

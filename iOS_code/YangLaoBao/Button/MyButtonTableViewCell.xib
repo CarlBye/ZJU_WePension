@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YE-V5-gOC">
-                        <rect key="frame" x="95" y="16" width="69" height="21"/>
+                        <rect key="frame" x="95" y="16" width="179" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -40,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-de-yKs">
-                        <rect key="frame" x="95" y="34" width="56" height="21"/>
+                        <rect key="frame" x="95" y="34" width="114" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
@@ -73,7 +73,7 @@
                 <outlet property="switchBtn" destination="VqF-zP-JDz" id="Y8J-Ou-9ft"/>
                 <outlet property="type" destination="37F-bb-cma" id="RRJ-dK-PLk"/>
             </connections>
-            <point key="canvasLocation" x="-368.5" y="12"/>
+            <point key="canvasLocation" x="-368.5" y="11.5"/>
         </tableViewCell>
     </objects>
 </document>
