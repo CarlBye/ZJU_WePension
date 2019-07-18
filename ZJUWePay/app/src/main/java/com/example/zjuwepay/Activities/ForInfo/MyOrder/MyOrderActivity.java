@@ -227,7 +227,7 @@ public class MyOrderActivity extends AppCompatActivity implements Constant, View
                     ViewGroup.LayoutParams.MATCH_PARENT);
             layoutDetailsParams.width = dp2px(this, 130);
             layoutDetailsParams.height = dp2px(this, 40);
-            layoutDetailsParams.leftMargin = dp2px(this, 20);
+            layoutDetailsParams.leftMargin = dp2px(this, 40);
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
