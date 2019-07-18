@@ -267,7 +267,7 @@
                     android:id="@+id/tv_ItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="商品名"
+                    android:text="请选择商品"
                     android:textSize="20sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"/>
@@ -276,7 +276,7 @@
                     android:id="@+id/tv_ItemId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="商品编号"
+                    android:text=""
                     android:textSize="15sp"
                     android:layout_marginTop="0dp"
                     android:layout_marginLeft="10dp"/>
@@ -285,7 +285,7 @@
                     android:id="@+id/tv_ItemAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="件数"
+                    android:text=""
                     android:textSize="18sp"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"/>
@@ -294,7 +294,7 @@
                     android:id="@+id/tv_ItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="价格"
+                    android:text=""
                     android:textSize="18sp"
                     android:layout_marginTop="3dp"
                     android:layout_marginLeft="10dp"/>

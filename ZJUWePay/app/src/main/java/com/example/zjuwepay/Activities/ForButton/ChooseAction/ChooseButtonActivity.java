@@ -353,7 +353,7 @@ public class ChooseButtonActivity extends AppCompatActivity implements Constant,
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
-            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
+//            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
 
             //image for button choose
             ImageView detailsImg = new ImageView(ChooseButtonActivity.this);

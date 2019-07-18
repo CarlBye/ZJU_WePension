@@ -227,11 +227,11 @@ public class MyOrderActivity extends AppCompatActivity implements Constant, View
                     ViewGroup.LayoutParams.MATCH_PARENT);
             layoutDetailsParams.width = dp2px(this, 130);
             layoutDetailsParams.height = dp2px(this, 40);
-            layoutDetailsParams.leftMargin = dp2px(this, 0);
+            layoutDetailsParams.leftMargin = dp2px(this, 20);
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
-            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
+//            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
 
             //image for details button
             ImageView detailsImg = new ImageView(MyOrderActivity.this);
@@ -242,7 +242,7 @@ public class MyOrderActivity extends AppCompatActivity implements Constant, View
             detailsImgParams.height = dp2px(this, 20);
             detailsImgParams.gravity = Gravity.CENTER_VERTICAL;
             detailsImg.setLayoutParams(detailsImgParams);
-            detailsImg.setImageResource(R.drawable.right_circular);
+            detailsImg.setImageResource(R.drawable.fast);
 
             //text view details button
             TextView detailsText = new TextView(MyOrderActivity.this);

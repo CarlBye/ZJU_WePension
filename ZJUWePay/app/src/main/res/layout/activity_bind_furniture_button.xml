@@ -150,6 +150,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="20sp"
+                android:textColor="#6699ff"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp" />
 
@@ -172,6 +173,7 @@
                 android:id="@+id/tv_thisButtonId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#6699ff"
                 android:text=""
                 android:textSize="20sp"
                 android:layout_marginLeft="10dp"
@@ -252,6 +254,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="20sp"
+                android:textColor="#66cc99"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp" />
 
@@ -276,6 +279,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="20sp"
+                android:textColor="#66cc99"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp" />
 

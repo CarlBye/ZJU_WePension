@@ -228,7 +228,7 @@ public class MyHelpActivity extends AppCompatActivity implements Constant, View.
             //message text
             TextView msgText = new TextView(MyHelpActivity.this);
             LinearLayout.LayoutParams msgTextParams = new LinearLayout.LayoutParams(
-                    dp2px(this, 220),
+                    dp2px(this, 260),
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             msgTextParams.gravity = Gravity.CENTER_VERTICAL;
             msgTextParams.leftMargin = dp2px(this, 10);
@@ -268,6 +268,9 @@ public class MyHelpActivity extends AppCompatActivity implements Constant, View.
             dateText.setTextSize(15);
             dateText.setText("发送时间: " + helps.get(i).get("historyDate"));
 
+            layoutDown.addView(dateImage);
+            layoutDown.addView(dateText);
+
             //state text
             TextView checkText = new TextView(MyHelpActivity.this);
             LinearLayout.LayoutParams checkTextParams = new LinearLayout.LayoutParams(
@@ -275,10 +278,24 @@ public class MyHelpActivity extends AppCompatActivity implements Constant, View.
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             checkTextParams.gravity = Gravity.CENTER_VERTICAL;
             if(helps.get(i).get("isConfirmed").toString().equals("false")) {
+
+                //image for details button
+                ImageView detailsImg = new ImageView(MyHelpActivity.this);
+                LinearLayout.LayoutParams detailsImgParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                detailsImgParams.width = dp2px(this, 20);
+                detailsImgParams.height = dp2px(this, 20);
+                detailsImgParams.gravity = Gravity.CENTER_VERTICAL;
+                detailsImg.setLayoutParams(detailsImgParams);
+                detailsImg.setImageResource(R.drawable.ok);
+
+                layoutDown.addView(detailsImg);
+
                 checkTextParams.leftMargin = dp2px(this, 10);
                 checkText.setLayoutParams(checkTextParams);
                 checkText.setTextSize(15);
-                checkText.setBackgroundResource(R.drawable.rounded_rec_confirm_shape);
+//                checkText.setBackgroundResource(R.drawable.rounded_rec_confirm_shape);
                 checkText.setText("确认处理");
                 checkText.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -322,9 +339,6 @@ public class MyHelpActivity extends AppCompatActivity implements Constant, View.
                 checkText.setTextSize(15);
                 checkText.setText("已处理");
             }
-
-            layoutDown.addView(dateImage);
-            layoutDown.addView(dateText);
             layoutDown.addView(checkText);
 
             //Divider

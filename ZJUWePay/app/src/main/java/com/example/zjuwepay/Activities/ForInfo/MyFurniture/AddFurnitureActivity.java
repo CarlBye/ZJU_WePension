@@ -142,6 +142,18 @@ public class AddFurnitureActivity extends AppCompatActivity implements Constant,
                 String newFurnitureId = etNewFurnitureId.getText().toString();
                 String newFurnitureName = etNewFurnitureName.getText().toString();
 
+                if(newFurnitureId.equals("")) {
+                    Toast errMsg = Toast.makeText(AddFurnitureActivity.this, "请输入家具编号", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                } else if(newFurnitureName.equals("")) {
+                    Toast errMsg = Toast.makeText(AddFurnitureActivity.this, "请输入家具名称", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                }
+
                 Map furnitureInfo = new HashMap();
                 furnitureInfo.put("curId", currentId);
                 furnitureInfo.put("furnId", newFurnitureId);

@@ -342,7 +342,7 @@ public class ChooseFurnitureActivity extends AppCompatActivity implements Consta
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
-            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
+//            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
 
             //image for details button
             ImageView detailsImg = new ImageView(ChooseFurnitureActivity.this);
