@@ -254,12 +254,10 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
             LinearLayout.LayoutParams itemImgParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            itemImgParams.width = dp2px(this, 140);
-            itemImgParams.height = dp2px(this, 140);
+            itemImgParams.width = dp2px(this, 110);
+            itemImgParams.height = dp2px(this, 110);
             itemImgParams.topMargin = dp2px(this, 10);
             itemImgParams.leftMargin = dp2px(this, 10);
-            itemImgParams.bottomMargin = dp2px(this, 10);
-            itemImgParams.gravity = Gravity.CENTER_VERTICAL;
             itemImg.setLayoutParams(itemImgParams);
             String imgStr = items.get(i).get("comImgPath");
             itemImg.setImageURL(imgStr);
@@ -277,11 +275,11 @@ public class ShoppingMainActivity extends AppCompatActivity implements Constant,
             //item name
             TextView nameText = new TextView(ShoppingMainActivity.this);
             LinearLayout.LayoutParams nameTextParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             nameTextParams.leftMargin = dp2px(this, 10);
             nameTextParams.topMargin = dp2px(this, 20);
-            nameText.setTextSize(20);
+            nameText.setTextSize(18);
             nameText.setLayoutParams(nameTextParams);
             nameText.setText(items.get(i).get("comName"));
 

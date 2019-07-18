@@ -4,14 +4,18 @@ import android.content.Context;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.zjuwepay.R;
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.PushConsts;
 import com.igexin.sdk.PushManager;
+import com.igexin.sdk.message.BindAliasCmdMessage;
 import com.igexin.sdk.message.FeedbackCmdMessage;
 import com.igexin.sdk.message.GTCmdMessage;
 import com.igexin.sdk.message.GTNotificationMessage;
 import com.igexin.sdk.message.GTTransmitMessage;
 import com.igexin.sdk.message.SetTagCmdMessage;
+import com.igexin.sdk.message.UnBindAliasCmdMessage;
+
 
 /**
  * 继承 GTIntentService 接收来自个推的消息, 所有消息在线程中回调, 如果注册了该服务, 则务必要在 AndroidManifest中声明, 否则无法接受消息<br>
@@ -22,37 +26,45 @@ import com.igexin.sdk.message.SetTagCmdMessage;
  */
 public class DemoIntentService extends GTIntentService {
 
+    private static final String TAG = "GetuiSdkDemo";
+
     public DemoIntentService() {
 
     }
 
     @Override
     public void onReceiveServicePid(Context context, int pid) {
+
     }
 
     @Override
     public void onReceiveMessageData(Context context, GTTransmitMessage msg) {
-        // 透传消息的处理，详看SDK demo
+        Log.e(TAG, "onReceiveMessageData -> " + "message = " + new String(msg.getPayload()));
     }
 
     @Override
     public void onReceiveClientId(Context context, String clientid) {
-        Log.e(TAG, "onReceiveClientId -> " + "clientid = " + clientid);
+        System.out.println("I'm here");
+        Log.d(TAG, "onReceiveClientId -> " + "clientid = " + clientid);
     }
 
     @Override
     public void onReceiveOnlineState(Context context, boolean online) {
+
     }
 
     @Override
     public void onReceiveCommandResult(Context context, GTCmdMessage cmdMessage) {
+
     }
 
     @Override
-    public void onNotificationMessageArrived(Context context, GTNotificationMessage msg) {
+    public void onNotificationMessageArrived(Context context, GTNotificationMessage message) {
+
     }
 
     @Override
-    public void onNotificationMessageClicked(Context context, GTNotificationMessage msg) {
+    public void onNotificationMessageClicked(Context context, GTNotificationMessage message) {
+
     }
 }

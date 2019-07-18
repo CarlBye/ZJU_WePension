@@ -21,6 +21,7 @@ import com.example.zjuwepay.Activities.ForButton.BindFurniture.BindFurnitureButt
 import com.example.zjuwepay.Activities.ForButton.ChooseAction.ChooseButtonActivity;
 import com.example.zjuwepay.Activities.ForInfo.MyButton.MyButtonActivity;
 import com.example.zjuwepay.Activities.ForShopping.ShoppingMainActivity;
+import com.example.zjuwepay.Activities.ForUser.LoginActivity;
 import com.example.zjuwepay.Components.MyImageView;
 import com.example.zjuwepay.Constant;
 import com.example.zjuwepay.PublicData;
@@ -128,18 +129,18 @@ public class BindBuyButtonActivity extends AppCompatActivity implements Constant
         });
 
         //set texts
-        if(PublicData.getComName() != null) tvItemName.setText(PublicData.getComName());
-        if(PublicData.getComId() != null) tvItemId.setText(PublicData.getComId());
-        if(PublicData.getComAmount() != null) tvItemAmount.setText(PublicData.getComAmount() + "件");
-        if(PublicData.getComPrice() != "" && PublicData.getComAmount() != "") {
+        if(!PublicData.getComName().equals("")) tvItemName.setText(PublicData.getComName());
+        if(!PublicData.getComId().equals("")) tvItemId.setText(PublicData.getComId());
+        if(!PublicData.getComAmount().equals("")) tvItemAmount.setText(PublicData.getComAmount() + "件");
+        if(!PublicData.getComPrice().equals("") && !PublicData.getComAmount().equals("")) {
             DecimalFormat format = new DecimalFormat("0.00");
             String str = String.valueOf(Double.parseDouble(PublicData.getComPrice()) * Integer.parseInt(PublicData.getComAmount()));
             String price = format.format(new BigDecimal(str));
-            tvItemPrice.setText("￥" + price);
+            tvItemPrice.setText(price + "￥");
         }
-        if(PublicData.getComAddress() != null) tvAddressConfirm.setText("收货人地址：" + PublicData.getComAddress());
-        if(PublicData.getComPhone() != null) tvContactConfirm.setText("收货人联系方式：" + PublicData.getComPhone());
-        if(PublicData.getComSendName() != null) tvUserConfirm.setText("收货人：" + PublicData.getComSendName());
+        if(!PublicData.getComAddress().equals("")) tvAddressConfirm.setText("收货人地址：" + PublicData.getComAddress());
+        if(!PublicData.getComPhone().equals("")) tvContactConfirm.setText("收货人联系方式：" + PublicData.getComPhone());
+        if(!PublicData.getComSendName().equals("")) tvUserConfirm.setText("收货人：" + PublicData.getComSendName());
         String str_button = PublicData.getButtonIdTemp();
         if(!str_button.equals("未选择按钮")) {
             str_button = "B" + str_button.substring(0,3) + "-" + str_button.substring(3);
@@ -241,6 +242,23 @@ public class BindBuyButtonActivity extends AppCompatActivity implements Constant
                 String comAddress = PublicData.getComAddress();
                 String comPhone = PublicData.getComPhone();
                 String comName = PublicData.getComSendName();
+
+                if(comAddress.equals("")) {
+                    Toast errMsg = Toast.makeText(BindBuyButtonActivity.this, "请输入收货人地址", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                } else if(comPhone.equals("")) {
+                    Toast errMsg = Toast.makeText(BindBuyButtonActivity.this, "请输入收货人联系方式", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                } else if(comName.equals("")) {
+                    Toast errMsg = Toast.makeText(BindBuyButtonActivity.this, "请输入收货人姓名", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                }
 
                 Map bindInfo = new HashMap();
                 bindInfo.put("curId", curId);
