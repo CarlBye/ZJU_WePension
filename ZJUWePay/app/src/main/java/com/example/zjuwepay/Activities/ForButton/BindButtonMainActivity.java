@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.zjuwepay.Activities.ForButton.BindBuy.BindBuyButtonActivity;
 import com.example.zjuwepay.Activities.ForButton.BindFurniture.BindFurnitureButtonActivity;
+import com.example.zjuwepay.Activities.ForButton.BindHelp.BindHelpButtonActivity;
 import com.example.zjuwepay.Activities.MainActivity;
 import com.example.zjuwepay.Constant;
 import com.example.zjuwepay.R;
@@ -19,7 +20,7 @@ public class BindButtonMainActivity extends AppCompatActivity implements Constan
 
     //components
     private ImageView ivBackToMain;
-    private LinearLayout llAddBuyButton, llBindFurnitureButton;
+    private LinearLayout llAddBuyButton, llBindFurnitureButton, llBindHelpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +36,13 @@ public class BindButtonMainActivity extends AppCompatActivity implements Constan
         //bind buttons
         llAddBuyButton          = findViewById(R.id.ll_addBuyButton);
         llBindFurnitureButton   = findViewById(R.id.ll_bindFurButton);
+        llBindHelpButton        = findViewById(R.id.ll_addHelpButton);
 
         //bind listener
         ivBackToMain.setOnClickListener(this);
         llAddBuyButton.setOnClickListener(this);
         llBindFurnitureButton.setOnClickListener(this);
+        llBindHelpButton.setOnClickListener(this);
     }
 
     @Override
@@ -75,6 +78,18 @@ public class BindButtonMainActivity extends AppCompatActivity implements Constan
                     @Override
                     public void run() {
                         Intent intent = new Intent(BindButtonMainActivity.this, BindFurnitureButtonActivity.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+                    }
+                }, 30);
+                break;
+
+            case R.id.ll_addHelpButton:
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(BindButtonMainActivity.this, BindHelpButtonActivity.class);
                         startActivity(intent);
                         finish();
                         overridePendingTransition(R.anim.zoomin,R.anim.zoomout);

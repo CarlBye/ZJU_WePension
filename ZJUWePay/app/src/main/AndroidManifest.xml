@@ -67,14 +67,16 @@
         <!--&lt;!&ndash; 个推SDK配置结束 &ndash;&gt;-->
 
         <activity android:name=".Activities.MainActivity">
+
+        </activity>
+        <activity android:name=".Activities.ForUser.RegisterActivity"/>
+        <activity android:name=".Activities.ForUser.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ForUser.RegisterActivity"/>
-        <activity android:name=".Activities.ForUser.LoginActivity"/>
         <activity android:name=".Activities.ForUser.LogoutActivity"/>
         <activity android:name=".Activities.ForUser.SettingActivity"/>
         <activity android:name=".Activities.ForUser.FaceSelectActivity"/>
@@ -92,17 +94,21 @@
         <activity android:name=".Activities.ForInfo.MyOrder.MyOrderActivity"/>
         <activity android:name=".Activities.ForInfo.MyOrder.OrderDetailActivity"/>
         <activity android:name=".Activities.ForInfo.MyButton.FurnDetailActivity"/>
+        <activity android:name=".Activities.ForInfo.MyButton.BuyDetailActivity"/>
+        <activity android:name=".Activities.ForButton.BindHelp.BindHelpButtonActivity"/>
+        <activity android:name=".Activities.ForInfo.MyHelp.MyHelpActivity"/>
+        <activity android:name=".Activities.ForInfo.MyHealth.MyHealthActivity"/>
 
-        <!--<service-->
-            <!--android:name="com.example.zjuwepay.Service.DemoPushService"-->
-            <!--android:exported="true"-->
-            <!--android:label="PushService"-->
-            <!--android:process=":pushservice">-->
-        <!--</service>-->
+        <service
+            android:name="com.example.zjuwepay.Service.DemoPushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
 
-        <!--<service-->
-            <!--android:name="com.example.zjuwepay.Service.DemoIntentService"-->
-            <!--android:permission="android.permission.BIND_JOB_SERVICE"/>-->
+        <service
+            android:name="com.example.zjuwepay.Service.DemoIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
 
     </application>
 

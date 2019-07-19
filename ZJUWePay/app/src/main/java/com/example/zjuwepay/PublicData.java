@@ -4,21 +4,30 @@ import android.content.Context;
 
 public class PublicData {
 
-    private static String current_user_name, feedback, current_user_description;
+    private static String current_user_name, feedback, current_user_description, current_user_pwd;
     private static boolean log_state;
     private static int user_face = 0, current_user_id = 0;
 
     //cache for furn detail
     private static String furnDetailButtonId;
 
+    //cache for buy detail
+    private static String buyDetailButtonId;
+
     //cache for register
     private static String regNameTemp, regPwd1Tmp, regPwd2Temp, regPhoneTemp, regEmailTemp, regDescriptionTemp;
+
+    //cache for setting
+    private static String settingName = "", settingPwdOld = "", settingPwd1 = "", settingPwd2 = "", settingDes = "";
 
     //cache for button binding
     private static String buttonIdTemp = "未选择按钮", buttonNameTemp = "未选择按钮";
     private static String furnitureIdTemp = "未选择家具", furnitureNameTemp = "未选择家具";
     private static String furnitureTypeTemp = "0";
-    private static String comId, comAmount = "", comPhone, comAddress, comSendName, comName, comPrice = "", comImg;
+    private static String comId = "", comAmount = "", comPhone = "", comAddress = "", comSendName = "", comName = "", comPrice = "", comImg;
+
+    //cache for help info
+    private static String helpPhone, helpMsg;
 
     //cache for item info
     private static String itemImgUrlStr, itemName, itemId, itemPrice, itemStack, itemDescription;
@@ -26,12 +35,84 @@ public class PublicData {
     //cache for order info
     private static String orderImgUrlStr, orderName, orderId, orderPrice, orderDes, orderDate, orderAmount, orderState;
 
+    public static String getCurrent_user_pwd() {
+        return current_user_pwd;
+    }
+
+    public static String getHelpMsg() {
+        return helpMsg;
+    }
+
+    public static String getHelpPhone() {
+        return helpPhone;
+    }
+
+    public static void setHelpMsg(String helpMsg) {
+        PublicData.helpMsg = helpMsg;
+    }
+
+    public static void setHelpPhone(String helpPhone) {
+        PublicData.helpPhone = helpPhone;
+    }
+
+    public static void setCurrent_user_pwd(String current_user_pwd) {
+        PublicData.current_user_pwd = current_user_pwd;
+    }
+
+    public static String getSettingName() {
+        return settingName;
+    }
+
+    public static String getSettingDes() {
+        return settingDes;
+    }
+
+    public static String getSettingPwd1() {
+        return settingPwd1;
+    }
+
+    public static String getSettingPwd2() {
+        return settingPwd2;
+    }
+
+    public static String getSettingPwdOld() {
+        return settingPwdOld;
+    }
+
+    public static void setSettingDes(String settingDes) {
+        PublicData.settingDes = settingDes;
+    }
+
+    public static void setSettingName(String settingName) {
+        PublicData.settingName = settingName;
+    }
+
+    public static void setSettingPwd1(String settingPwd1) {
+        PublicData.settingPwd1 = settingPwd1;
+    }
+
+    public static void setSettingPwd2(String settingPwd2) {
+        PublicData.settingPwd2 = settingPwd2;
+    }
+
+    public static void setSettingPwdOld(String settingPwdOld) {
+        PublicData.settingPwdOld = settingPwdOld;
+    }
+
     public static String getFurnDetailButtonId() {
         return furnDetailButtonId;
     }
 
     public static void setFurnDetailButtonId(String id) {
         furnDetailButtonId = id;
+    }
+
+    public static String getBuyDetailButtonId() {
+        return buyDetailButtonId;
+    }
+
+    public static void setBuyDetailButtonId(String id) {
+        buyDetailButtonId = id;
     }
 
     public static String getOrderAmount() {

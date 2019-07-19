@@ -127,6 +127,18 @@ public class AddButtonActivity extends AppCompatActivity implements Constant, Vi
                 String newButtonId = etNewButtonId.getText().toString();
                 String newButtonName = etNewButtonName.getText().toString();
 
+                if(newButtonId.equals("")) {
+                    Toast errMsg = Toast.makeText(AddButtonActivity.this, "请输入按钮编号", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                } else if(newButtonName.equals("")) {
+                    Toast errMsg = Toast.makeText(AddButtonActivity.this, "给你的按钮取个昵称吧", Toast.LENGTH_SHORT);
+                    errMsg.setGravity(Gravity.BOTTOM, 0, 10);
+                    errMsg.show();
+                    break;
+                }
+
                 Map buttonInfo = new HashMap();
                 buttonInfo.put("curId", currentId);
                 buttonInfo.put("buttonId", newButtonId);

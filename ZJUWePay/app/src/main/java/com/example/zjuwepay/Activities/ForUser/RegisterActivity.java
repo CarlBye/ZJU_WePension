@@ -44,7 +44,6 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
 
     //components
     private EditText etRegName, etRegPwd1, etRegPwd2, etRegPhone, etPwdEmail, etDescription;
-    private TextView tvSendCode;
     private ImageView btnRegConfirm, btnBackToMenu, iv_img;
     private LinearLayout btnSetFace;
     private Gson myPack = new Gson();
@@ -157,7 +156,6 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                     @Override
                     public void run() {
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        intent.putExtra("keepOpen", 1);
                         startActivity(intent);
                         finish();
                         overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
@@ -180,37 +178,37 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
 
                 if(face_user_chosen == 0) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请选择头像", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regName.equals("")) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regPwd1.equals("")) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regPwd2.equals("")) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入第二次密码", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(!regPwd1.equals(regPwd2)) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "两次密码不一致", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(regPhone.length() != 11 || !phone.matcher(regPhone).matches()) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入正确格式的手机号", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 } else if(!email.matcher(regEmail).matches()) {
                     Toast errorMsg = Toast.makeText(RegisterActivity.this, "请输入正确格式的邮箱", Toast.LENGTH_SHORT);
-                    errorMsg.setGravity(Gravity.BOTTOM, 0, 50);
+                    errorMsg.setGravity(Gravity.BOTTOM, 0, 10);
                     errorMsg.show();
                     break;
                 }
@@ -231,7 +229,10 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                 PublicData.setRegEmailTemp(null);
                 PublicData.setRegDescriptionTemp(null);
 
-                while(!msgKey) {}
+                while(!msgKey) {
+                    SystemClock.sleep(10);
+                    System.out.println("tick");
+                }
 
                 String thisMsg = PublicData.getFeedback();
                 if(thisMsg == "") {
@@ -239,7 +240,7 @@ public class RegisterActivity extends AppCompatActivity implements Constant, Vie
                 }
 
                 Toast errMsg = Toast.makeText(RegisterActivity.this, thisMsg, Toast.LENGTH_LONG);
-                errMsg.setGravity(Gravity.BOTTOM, 0, 120);
+                errMsg.setGravity(Gravity.BOTTOM, 0, 10);
                 errMsg.show();
 
                 SystemClock.sleep(1000);

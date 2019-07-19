@@ -6,18 +6,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:background="#FFFFFF">
 
         <ImageView
             android:id="@+id/btn_backToButtonAddMain"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:src="@drawable/back">
 
         </ImageView>
@@ -25,10 +24,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="绑定购买按钮"
-            android:textSize="25sp"
+            android:text="丨绑定购买按钮"
+            android:textSize="20sp"
             android:layout_gravity="center"
-            android:layout_marginLeft="60dp"/>
+            android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
 
@@ -46,6 +45,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -69,6 +69,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -97,7 +98,7 @@
         android:orientation="horizontal"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -127,7 +128,7 @@
         android:orientation="horizontal"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="15dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -142,12 +143,22 @@
             android:layout_marginRight="10dp"
             android:hint="输入联系方式"
             android:paddingLeft="15dp"
-            android:layout_width="140dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:singleLine="true"
             android:background="@drawable/rounded_rec_input_shape"
             android:alpha="0.5"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp">
 
         <ImageView
             android:layout_width="30dp"
@@ -160,8 +171,8 @@
             android:inputType="text"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:hint="联系人姓名"
-            android:paddingLeft="10dp"
+            android:hint="输入联系人姓名"
+            android:paddingLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -170,6 +181,8 @@
             android:alpha="0.5"/>
 
     </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -202,12 +215,12 @@
             android:inputType="text"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:paddingLeft="0dp"
+            android:paddingLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="未选择按钮"
-            android:textSize="22sp"
+            android:textSize="15sp"
             />
 
     </LinearLayout>
@@ -254,8 +267,8 @@
                     android:id="@+id/tv_ItemName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="商品名"
-                    android:textSize="25sp"
+                    android:text="请选择商品"
+                    android:textSize="20sp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"/>
 
@@ -263,7 +276,7 @@
                     android:id="@+id/tv_ItemId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="商品编号"
+                    android:text=""
                     android:textSize="15sp"
                     android:layout_marginTop="0dp"
                     android:layout_marginLeft="10dp"/>
@@ -272,7 +285,7 @@
                     android:id="@+id/tv_ItemAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="件数"
+                    android:text=""
                     android:textSize="18sp"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="10dp"/>
@@ -281,7 +294,7 @@
                     android:id="@+id/tv_ItemPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="价格"
+                    android:text=""
                     android:textSize="18sp"
                     android:layout_marginTop="3dp"
                     android:layout_marginLeft="10dp"/>
@@ -343,7 +356,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         android:background="@drawable/rounded_rec_confirm_shape">

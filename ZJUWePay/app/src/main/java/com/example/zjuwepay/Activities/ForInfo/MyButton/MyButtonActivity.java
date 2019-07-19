@@ -222,8 +222,11 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             nameTextParams.gravity = Gravity.CENTER_VERTICAL;
             nameTextParams.leftMargin = dp2px(this, 12);
             nameText.setLayoutParams(nameTextParams);
-            nameText.setTextSize(20);
-            nameText.setText(buttons.get(i).get("buttonName"));
+            nameText.setTextSize(15);
+            nameText.setText("按钮名称: \n" + buttons.get(i).get("buttonName"));
+
+            layoutName.addView(nameImg);
+            layoutName.addView(nameText);
 
             //inner layout for button id
             LinearLayout layoutId = new LinearLayout(MyButtonActivity.this);
@@ -260,6 +263,12 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             str = "B" + str.substring(0,3) + "-" + str.substring(3);
             idText.setText(str);
 
+            layoutId.addView(idImg);
+            layoutId.addView(idText);
+
+            layoutUp.addView(layoutName);
+            layoutUp.addView(layoutId);
+
             //inner down layout
             LinearLayout layoutDown = new LinearLayout(MyButtonActivity.this);
             LinearLayout.LayoutParams layoutDownParams = new LinearLayout.LayoutParams(
@@ -276,7 +285,7 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             LinearLayout.LayoutParams layoutTypeParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutTypeParams.width = dp2px(this, 230);
+            layoutTypeParams.width = dp2px(this, 220);
             layoutTypeParams.leftMargin = dp2px(this, 10);
             layoutType.setLayoutParams(layoutTypeParams);
             layoutType.setOrientation(LinearLayout.HORIZONTAL);
@@ -286,8 +295,8 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             LinearLayout.LayoutParams typeImgParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            typeImgParams.width = dp2px(this, 35);
-            typeImgParams.height = dp2px(this, 35);
+            typeImgParams.width = dp2px(this, 25);
+            typeImgParams.height = dp2px(this, 25);
             typeImgParams.gravity = Gravity.CENTER_VERTICAL;
             typeImg.setLayoutParams(typeImgParams);
             typeImg.setImageResource(R.drawable.type);
@@ -300,7 +309,7 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             typeTextParams.gravity = Gravity.CENTER_VERTICAL;
             typeTextParams.leftMargin = dp2px(this, 12);
             typeText.setLayoutParams(typeTextParams);
-            typeText.setTextSize(20);
+            typeText.setTextSize(15);
             switch (buttons.get(i).get("buttonType")) {
                 /*
                     0 - 无
@@ -310,80 +319,104 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
                     4 - 体征检测
                  */
                 case "0":
-                    typeText.setText("未绑定");
+                    typeText.setText("丨未绑定");
                     typeText.setTextColor(Color.rgb(0x80, 0x80, 0x80));
                     break;
                 case "1":
-                    typeText.setText("自动下单");
+                    typeText.setText("丨自动下单");
                     typeText.setTextColor(Color.rgb(0x99, 0xCC, 0xFF));
                     break;
                 case "2":
-                    typeText.setText("家具控制");
+                    typeText.setText("丨家具控制");
                     typeText.setTextColor(Color.rgb(0x66, 0xCC, 0x99));
                     break;
                 case "3":
-                    typeText.setText("紧急求助");
+                    typeText.setText("丨紧急求助");
                     typeText.setTextColor(Color.rgb(0xFF, 0x30, 0x00));
                     break;
                 case "4":
-                    typeText.setText("体征检测");
+                    typeText.setText("丨体征检测");
                     typeText.setTextColor(Color.rgb(0xFF, 0xCC, 0x33));
                     break;
             }
 
-            //inner layout for button details
-            LinearLayout layoutDetails = new LinearLayout(MyButtonActivity.this);
-            LinearLayout.LayoutParams layoutDetailsParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutDetailsParams.width = dp2px(this, 130);
-            layoutDetailsParams.height = dp2px(this, 40);
-            layoutDetailsParams.leftMargin = dp2px(this, 20);
-            layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
-            layoutDetails.setLayoutParams(layoutDetailsParams);
-            layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
-            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
+            layoutType.addView(typeImg);
+            layoutType.addView(typeText);
 
-            //image for details button
-            ImageView detailsImg = new ImageView(MyButtonActivity.this);
-            LinearLayout.LayoutParams detailsImgParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            detailsImgParams.width = dp2px(this, 20);
-            detailsImgParams.height = dp2px(this, 20);
-            detailsImgParams.gravity = Gravity.CENTER_VERTICAL;
-            detailsImg.setLayoutParams(detailsImgParams);
-            detailsImg.setImageResource(R.drawable.right_circular);
+            layoutDown.addView(layoutType);
 
-            //text view details button
-            TextView detailsText = new TextView(MyButtonActivity.this);
-            LinearLayout.LayoutParams detailsTextParams = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            detailsTextParams.gravity = Gravity.CENTER_VERTICAL;
-            detailsTextParams.leftMargin = dp2px(this, 10);
-            detailsText.setLayoutParams(detailsTextParams);
-            detailsText.setTextSize(18);
-            detailsText.setText("查看详情");
+            if(buttons.get(i).get("buttonType").equals("1") || buttons.get(i).get("buttonType").equals("2")) {
+                //inner layout for button details
+                LinearLayout layoutDetails = new LinearLayout(MyButtonActivity.this);
+                LinearLayout.LayoutParams layoutDetailsParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+                layoutDetailsParams.width = dp2px(this, 130);
+                layoutDetailsParams.height = dp2px(this, 40);
+                layoutDetailsParams.leftMargin = dp2px(this, 20);
+                layoutDetailsParams.topMargin = dp2px(this, 5);
+                layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
+                layoutDetails.setLayoutParams(layoutDetailsParams);
+                layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
+//                layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
 
-            layoutDetails.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //家具
-                    if(buttons.get(index).get("buttonType").equals("2")) {
-                        PublicData.setFurnDetailButtonId(buttons.get(index).get("buttonId"));
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(MyButtonActivity.this, FurnDetailActivity.class);
-                                startActivity(intent);
-                                finish();
-                                overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
-                            }
-                        }, 30);
+                //image for details button
+                ImageView detailsImg = new ImageView(MyButtonActivity.this);
+                LinearLayout.LayoutParams detailsImgParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                detailsImgParams.width = dp2px(this, 20);
+                detailsImgParams.height = dp2px(this, 20);
+                detailsImgParams.gravity = Gravity.CENTER_VERTICAL;
+                detailsImg.setLayoutParams(detailsImgParams);
+                detailsImg.setImageResource(R.drawable.fast);
+
+                //text view details button
+                TextView detailsText = new TextView(MyButtonActivity.this);
+                LinearLayout.LayoutParams detailsTextParams = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT);
+                detailsTextParams.gravity = Gravity.CENTER_VERTICAL;
+                detailsTextParams.leftMargin = dp2px(this, 10);
+                detailsText.setLayoutParams(detailsTextParams);
+                detailsText.setTextSize(18);
+                detailsText.setText("查看详情");
+
+                layoutDetails.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //家具
+                        if(buttons.get(index).get("buttonType").equals("2")) {
+                            PublicData.setFurnDetailButtonId(buttons.get(index).get("buttonId"));
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(MyButtonActivity.this, FurnDetailActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+                                }
+                            }, 30);
+                        } else if(buttons.get(index).get("buttonType").equals("1")) {
+                            PublicData.setBuyDetailButtonId(buttons.get(index).get("buttonId"));
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(MyButtonActivity.this, BuyDetailActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
+                                }
+                            }, 30);
+                        }
                     }
-                }
-            });
+                });
+
+                layoutDetails.addView(detailsImg);
+                layoutDetails.addView(detailsText);
+
+                layoutDown.addView(layoutDetails);
+            }
 
             //Divider
             View line_1 = new View(MyButtonActivity.this);
@@ -402,25 +435,6 @@ public class MyButtonActivity extends AppCompatActivity implements Constant, Vie
             line2Params.topMargin = dp2px(this, 2.5f);
             line_2.setLayoutParams(line2Params);
             line_2.setBackgroundColor(Color.rgb(0, 0, 0));
-
-            //add in
-            layoutName.addView(nameImg);
-            layoutName.addView(nameText);
-
-            layoutId.addView(idImg);
-            layoutId.addView(idText);
-
-            layoutType.addView(typeImg);
-            layoutType.addView(typeText);
-
-            layoutDetails.addView(detailsImg);
-            layoutDetails.addView(detailsText);
-
-            layoutUp.addView(layoutName);
-            layoutUp.addView(layoutId);
-
-            layoutDown.addView(layoutType);
-            layoutDown.addView(layoutDetails);
 
             layoutMain.addView(layoutUp);
             layoutMain.addView(layoutDown);

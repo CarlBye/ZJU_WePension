@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.zjuwepay.Activities.ForButton.BindBuy.BindBuyButtonActivity;
 import com.example.zjuwepay.Activities.ForButton.BindFurniture.BindFurnitureButtonActivity;
+import com.example.zjuwepay.Activities.ForButton.BindHelp.BindHelpButtonActivity;
 import com.example.zjuwepay.Constant;
 import com.example.zjuwepay.PublicData;
 import com.example.zjuwepay.R;
@@ -108,6 +109,11 @@ public class ChooseButtonActivity extends AppCompatActivity implements Constant,
                             overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
                         } else if(toPage == 2) {
                             Intent intent = new Intent(ChooseButtonActivity.this, BindBuyButtonActivity.class);
+                            startActivity(intent);
+                            finish();
+                            overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
+                        } else if(toPage == 3) {
+                            Intent intent = new Intent(ChooseButtonActivity.this, BindHelpButtonActivity.class);
                             startActivity(intent);
                             finish();
                             overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
@@ -281,7 +287,7 @@ public class ChooseButtonActivity extends AppCompatActivity implements Constant,
             LinearLayout.LayoutParams layoutTypeParams = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.MATCH_PARENT);
-            layoutTypeParams.width = dp2px(this, 230);
+            layoutTypeParams.width = dp2px(this, 220);
             layoutTypeParams.leftMargin = dp2px(this, 10);
             layoutType.setLayoutParams(layoutTypeParams);
             layoutType.setOrientation(LinearLayout.HORIZONTAL);
@@ -347,7 +353,7 @@ public class ChooseButtonActivity extends AppCompatActivity implements Constant,
             layoutDetailsParams.gravity = Gravity.CENTER_VERTICAL;
             layoutDetails.setLayoutParams(layoutDetailsParams);
             layoutDetails.setOrientation(LinearLayout.HORIZONTAL);
-            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
+//            layoutDetails.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_details_shape));
 
             //image for button choose
             ImageView detailsImg = new ImageView(ChooseButtonActivity.this);
@@ -432,6 +438,13 @@ public class ChooseButtonActivity extends AppCompatActivity implements Constant,
                                 overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
                             } else if(toPage == 2) {
                                 Intent intent = new Intent(ChooseButtonActivity.this, BindBuyButtonActivity.class);
+                                PublicData.setButtonIdTemp(thisButtonId);
+                                PublicData.setButtonNameTemp(thisButtonName);
+                                startActivity(intent);
+                                finish();
+                                overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);
+                            } else if(toPage == 3) {
+                                Intent intent = new Intent(ChooseButtonActivity.this, BindHelpButtonActivity.class);
                                 PublicData.setButtonIdTemp(thisButtonId);
                                 PublicData.setButtonNameTemp(thisButtonName);
                                 startActivity(intent);

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.zjuwepay.Components.MyImageView;
 import com.example.zjuwepay.Constant;
 import com.example.zjuwepay.PublicData;
 import com.example.zjuwepay.R;
@@ -22,6 +23,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,24 +38,29 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 
-public class FurnDetailActivity extends AppCompatActivity implements Constant, View.OnClickListener {
+public class BuyDetailActivity extends AppCompatActivity implements Constant, View.OnClickListener {
 
     //connection
     private static final String URL_ROOT = "http://47.100.98.181:32006";
-    private static final String FURN_DETAIL = "/api/button/detail/furniture";
+    private static final String ORDER_DETAIL = "/api/button/detail/commodity";
 
     //components
-    private ImageView ivBtnBackToMyButton, ivFurnState, ivFurnType;
-    private TextView tvButtonName, tvButtonId, tvButtonType, tvFurnName, tvFurnState, tvFurnType, tvFurnId;
-    private LinearLayout llFurnState;
+    private ImageView ivBtnBackToMyButton;
+    private MyImageView ivComImg;
+    private TextView tvButtonName, tvButtonId, tvButtonType, tvComName, tvComNum, tvComId, tvComPrice, tvComDeliveryName, tvComDeliveryAddress, tvComDeliveryPhone;
 
     private String buttonName = "";
     private String buttonId = "0";
     private String buttonType = "";
-    private String furnName = "";
-    private String furnId = "0";
-    private String furnState = "0";
-    private String furnType = "0";
+    private String comName = "";
+    private String comImg = "";
+    private String comNum = "0";
+    private String comId = "0";
+    private String comPrice = "0.0";
+    private String comDeliveryAddress = "";
+    private String comDeliveryPhone = "";
+    private String comDeliveryName = "";
+
 
     //async lock
     private boolean wait_lock = false;
@@ -63,7 +71,7 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_furn_button_detail);
+        setContentView(R.layout.activity_buy_button_detail);
         init();
     }
 
@@ -80,45 +88,8 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
 
         //bind image view
         ivBtnBackToMyButton = findViewById(R.id.btn_backToMyButton);
-        ivFurnState = findViewById(R.id.iv_furnState);
-        switch(furnState) {
-            case "0":
-                ivFurnState.setImageResource(R.drawable.red_circle);
-                break;
-            case "1":
-                ivFurnState.setImageResource(R.drawable.green_circle);
-                break;
-        }
-        ivFurnType = findViewById(R.id.iv_furnType);
-        switch(furnType) {
-            case "0":
-                ivFurnType.setImageResource(R.drawable.unknown);
-                break;
-            case "1":
-                ivFurnType.setImageResource(R.drawable.furniture);
-                break;
-            case "2":
-                ivFurnType.setImageResource(R.drawable.tv);
-                break;
-            case "3":
-                ivFurnType.setImageResource(R.drawable.curtain);
-                break;
-        }
-
-        //bind linear layout
-        llFurnState = findViewById(R.id.ll_furnState);
-        switch(furnState) {
-                /*
-                    0 - 关
-                    1 - 开
-                 */
-            case "0":
-                llFurnState.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_state_false_shape));
-                break;
-            case "1":
-                llFurnState.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_rec_state_true_shape));
-                break;
-        }
+        ivComImg = findViewById(R.id.iv_thisItemImg);
+        ivComImg.setImageURL(comImg);
 
         //bind text view
         tvButtonName = findViewById(R.id.tv_buttonName);
@@ -127,10 +98,6 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
         String str = String.format("%08d", Integer.parseInt(buttonId));
         str = "B" + str.substring(0,3) + "-" + str.substring(3);
         tvButtonId.setText(str);
-        tvFurnId = findViewById(R.id.tv_furnId);
-        String f_str = String.format("%08d", Integer.parseInt(furnId));
-        f_str = "F" + f_str.substring(0,3) + "-" + f_str.substring(3);
-        tvFurnId.setText(f_str);
         tvButtonType = findViewById(R.id.tv_buttonType);
         switch(buttonType) {
             case "0":
@@ -154,36 +121,25 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
                 tvButtonType.setTextColor(Color.rgb(0xFF, 0xCC, 0x33));
                 break;
         }
-        tvFurnName = findViewById(R.id.tv_furnName);
-        tvFurnName.setText(furnName);
-        tvFurnState = findViewById(R.id.tv_furnState);
-        switch(furnState) {
-                /*
-                    0 - 关
-                    1 - 开
-                 */
-            case "0":
-                tvFurnState.setText("关闭状态");
-                break;
-            case "1":
-                tvFurnState.setText("开启状态");
-                break;
-        }
-        tvFurnType = findViewById(R.id.tv_furnType);
-        switch(furnType) {
-            case "0":
-                tvFurnType.setText("未知类型");
-                break;
-            case "1":
-                tvFurnType.setText("灯具");
-                break;
-            case "2":
-                tvFurnType.setText("电视");
-                break;
-            case "3":
-                tvFurnType.setText("窗帘");
-                break;
-        }
+        tvComName = findViewById(R.id.tv_ItemName);
+        tvComName.setText("| " + comName);
+        tvComId = findViewById(R.id.tv_ItemId);
+        String str_item = String.format("%08d", Integer.parseInt(comId));
+        str_item = "O" + str_item.substring(0,3) + "-" + str_item.substring(3);
+        tvComId.setText(str_item);
+        tvComNum = findViewById(R.id.tv_ItemAmount);
+        tvComNum.setText("购买数量: " + comNum + "件");
+        tvComPrice = findViewById(R.id.tv_ItemPrice);
+        DecimalFormat format = new DecimalFormat("0.00");
+        String str_price = String.valueOf(Double.parseDouble(comPrice) * Integer.parseInt(comNum));
+        String price = format.format(new BigDecimal(str_price));
+        tvComPrice.setText("总价: " + price + "￥");
+        tvComDeliveryAddress = findViewById(R.id.tv_AddressConfirm);
+        tvComDeliveryAddress.setText("收货人地址: " + comDeliveryAddress);
+        tvComDeliveryPhone = findViewById(R.id.tv_ContactConfirm);
+        tvComDeliveryPhone.setText("收货人联系方式: " + comDeliveryPhone);
+        tvComDeliveryName = findViewById(R.id.tv_UserConfirm);
+        tvComDeliveryName.setText("收货人: " + comDeliveryName);
 
         //bind listener
         ivBtnBackToMyButton.setOnClickListener(this);
@@ -194,14 +150,14 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
 
         Map map = new HashMap();
         map.put("curId", idForFetch);
-        map.put("buttonId", PublicData.getFurnDetailButtonId());
+        map.put("buttonId", PublicData.getBuyDetailButtonId());
 
         String params = myPack.toJson(map);
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
         RequestBody requestBody = RequestBody.create(mediaType, params);
 
         Request request = new Request.Builder()
-                .url(URL_ROOT + FURN_DETAIL)
+                .url(URL_ROOT + ORDER_DETAIL)
                 .post(requestBody)
                 .build();
         OkHttpClient okHttpClient = new OkHttpClient();
@@ -226,12 +182,19 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
                 responseInfo = myPack.fromJson(jsonObject, Map.class);
 
                 buttonName = (String)responseInfo.get("buttonName");
+                System.out.println(buttonName);
                 buttonId = (String)responseInfo.get("buttonId");
                 buttonType = (String)responseInfo.get("buttonType");
-                furnName = (String)responseInfo.get("furnName");
-                furnId = (String)responseInfo.get("furnId");
-                furnState = (String)responseInfo.get("furnState");
-                furnType = (String)responseInfo.get("furnType");
+//                comImg = (String)responseInfo.get("");
+
+                comName = (String)responseInfo.get("comName");
+                comImg = (String)responseInfo.get("comImgPath");
+                comId = (String)responseInfo.get("comId");
+                comNum = (String)responseInfo.get("comNum");
+                comPrice = (String)responseInfo.get("comPrice");
+                comDeliveryAddress = (String)responseInfo.get("comDeliveryAddress");
+                comDeliveryPhone = (String)responseInfo.get("comDeliveryPhone");
+                comDeliveryName = (String)responseInfo.get("comDeliveryName");
 
                 wait_lock = true;
 
@@ -247,7 +210,7 @@ public class FurnDetailActivity extends AppCompatActivity implements Constant, V
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(FurnDetailActivity.this, MyButtonActivity.class);
+                        Intent intent = new Intent(BuyDetailActivity.this, MyButtonActivity.class);
                         startActivity(intent);
                         finish();
                         overridePendingTransition(R.anim.in_from_left,R.anim.out_to_right);

@@ -6,10 +6,15 @@ android {
     defaultConfig {
         applicationId "com.example.zjuwepay"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID : "HjSTrhUHlVAcitgG6FSxB2",
+                GETUI_APP_KEY : "94ZCucnK7o9xkkvZFkUnl5",
+                GETUI_APP_SECRET : "7n9A5S0mBV6wLxrkLi5M33"
+        ]
     }
     buildTypes {
         release {
@@ -40,4 +45,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.2'
     implementation 'com.blankj:utilcode:1.18.2'
     implementation 'com.jude:rollviewpager:1.2.9'
+    implementation 'com.getui:sdk:2.13.2.0'
 }
